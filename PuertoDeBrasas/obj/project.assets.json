@@ -1899,11 +1899,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\PuertoDeBrasas.csproj",
+      "projectUniqueName": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\PuertoDeBrasas.csproj",
       "projectName": "PuertoDeBrasas",
-      "projectPath": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\PuertoDeBrasas.csproj",
+      "projectPath": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\PuertoDeBrasas.csproj",
       "packagesPath": "C:\\Users\\guido\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\obj\\",
+      "outputPath": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

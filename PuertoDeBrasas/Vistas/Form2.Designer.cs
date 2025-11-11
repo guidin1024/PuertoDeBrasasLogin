@@ -112,7 +112,7 @@
             // 
             textBoxTelefono.Location = new Point(56, 529);
             textBoxTelefono.Name = "textBoxTelefono";
-            textBoxTelefono.Size = new Size(161, 27);
+            textBoxTelefono.Size = new Size(165, 27);
             textBoxTelefono.TabIndex = 6;
             // 
             // textBoxContraseña
@@ -120,21 +120,21 @@
             textBoxContraseña.Location = new Point(56, 291);
             textBoxContraseña.Name = "textBoxContraseña";
             textBoxContraseña.PasswordChar = '*';
-            textBoxContraseña.Size = new Size(161, 27);
+            textBoxContraseña.Size = new Size(281, 27);
             textBoxContraseña.TabIndex = 7;
             // 
             // textBoxCorreo
             // 
             textBoxCorreo.Location = new Point(56, 198);
             textBoxCorreo.Name = "textBoxCorreo";
-            textBoxCorreo.Size = new Size(161, 27);
+            textBoxCorreo.Size = new Size(281, 27);
             textBoxCorreo.TabIndex = 8;
             // 
             // textBoxNom
             // 
             textBoxNom.Location = new Point(56, 113);
             textBoxNom.Name = "textBoxNom";
-            textBoxNom.Size = new Size(165, 27);
+            textBoxNom.Size = new Size(281, 27);
             textBoxNom.TabIndex = 9;
             // 
             // buttonRegistro
@@ -169,7 +169,7 @@
             comboTipos.Items.AddRange(new object[] { "Persona", "Empresa" });
             comboTipos.Location = new Point(56, 414);
             comboTipos.Name = "comboTipos";
-            comboTipos.Size = new Size(241, 28);
+            comboTipos.Size = new Size(165, 28);
             comboTipos.TabIndex = 12;
             // 
             // LabelTipoUsuario

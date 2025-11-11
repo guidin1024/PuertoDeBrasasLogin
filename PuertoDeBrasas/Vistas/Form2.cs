@@ -1,5 +1,5 @@
 ﻿using PuertoDeBrasas.Data;
-using PuertoDeBrasas.Models;
+using PuertoDeBrasas.Modelos;
 using System;
 using System.Windows.Forms;
 
@@ -7,12 +7,12 @@ namespace PuertoDeBrasas
 {
     public partial class Form2 : Form
     {
-        private ClienteRepository clienteRepo;
+        private ClienteRepositorio clienteRepo;
 
         public Form2()
         {
             InitializeComponent();
-            clienteRepo = new ClienteRepository();
+            clienteRepo = new ClienteRepositorio();
 
             Bitmap img = new Bitmap(Application.StartupPath + @"\img\Puerto de Brasas en Llamas.png");
             this.BackgroundImage = img;

@@ -1,5 +1,5 @@
 using PuertoDeBrasas.Data;
-using PuertoDeBrasas.Models;
+using PuertoDeBrasas.Modelos;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -8,12 +8,12 @@ namespace PuertoDeBrasas
 {
     public partial class Form1 : Form
     {
-        private ClienteRepository clienteRepo;
+        private ClienteRepositorio clienteRepo;
 
         public Form1()
         {
             InitializeComponent();
-            clienteRepo = new ClienteRepository();
+            clienteRepo = new ClienteRepositorio();
 
             Bitmap img = new Bitmap(Application.StartupPath + @"\img\Puerto de Brasas en Llamas.png");
             this.BackgroundImage = img;
@@ -38,7 +38,7 @@ namespace PuertoDeBrasas
 
                 if (cliente != null)
                 {
-                    MessageBox.Show($"Inicio de sesión exitoso. ¡Bienvenido {cliente.Nombre}!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
 
                     Form3 form3 = new Form3();
                     form3.Show();

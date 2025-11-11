@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace PuertoDeBrasas
+namespace PuertoDeBrasas.Modelos
 {
     public class Conexion
     {
@@ -16,7 +16,7 @@ namespace PuertoDeBrasas
         private const string password = "password=root";
         private const string bd = "database=puertodebrasasbd";
         //ATRIBUTOS DE INSTANCIA
-        private String cadenaConexion;
+        private string cadenaConexion;
         //CONSTRUCTOR
         public Conexion()
         {

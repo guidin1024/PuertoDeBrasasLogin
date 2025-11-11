@@ -1,17 +1,15 @@
 ﻿using MySqlConnector;
-using PuertoDeBrasas.Models;
+using PuertoDeBrasas.Modelos;
 using System;
 
 namespace PuertoDeBrasas.Data
 {
-    public class ClienteRepository
+    public class ClienteRepositorio
     {
-        // 🔹 Cadena de conexión: ajustá los valores a tu configuración local
         private readonly string connectionString =
-            "Server=localhost;Database=puertodebrasasbd;User ID=root;Password=;";
+            "Server=localhost;Database=puertodebrasasbd;User ID=root;Password=root";
 
-        // 🔸 Constructor: prueba automática de conexión
-        public ClienteRepository()
+        public ClienteRepositorio()
         {
             try
             {
@@ -22,12 +20,11 @@ namespace PuertoDeBrasas.Data
             catch (Exception ex)
             {
                 Console.WriteLine("❌ Error al conectar con la base de datos: " + ex.Message);
-                // Si preferís, podés lanzar la excepción para verla en tiempo de ejecución:
-                // throw;
+                
             }
         }
 
-        // 🔹 Registrar un nuevo cliente
+
         public bool Registrar(Cliente cliente)
         {
             try
@@ -55,11 +52,11 @@ namespace PuertoDeBrasas.Data
             }
             catch (Exception ex)
             {
-                throw new Exception("Error en ClienteRepository.Registrar: " + ex.Message, ex);
+                throw new Exception("Error en ClienteRepositorio.Registrar: " + ex.Message, ex);
             }
         }
 
-        // 🔹 Autenticar un cliente (para inicio de sesión)
+
         public Cliente? Autenticar(string correo, string clave)
         {
             try

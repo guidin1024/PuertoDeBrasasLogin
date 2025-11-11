@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PuertoDeBrasas.Models
+namespace PuertoDeBrasas.Modelos
 {
   
         public class Cliente

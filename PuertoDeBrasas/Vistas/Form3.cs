@@ -9,7 +9,7 @@ namespace PuertoDeBrasas
         {
             InitializeComponent();
 
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
 
@@ -41,7 +41,17 @@ namespace PuertoDeBrasas
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

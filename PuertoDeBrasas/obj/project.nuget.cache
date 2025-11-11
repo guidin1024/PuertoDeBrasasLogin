@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BsOudPr3Rh4=",
+  "dgSpecHash": "QaolY2l6fPM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\PuertoDeBrasas.csproj",
+  "projectFilePath": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\PuertoDeBrasas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\guido\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
     "C:\\Users\\guido\\.nuget\\packages\\k4os.compression.lz4\\1.3.5\\k4os.compression.lz4.1.3.5.nupkg.sha512",

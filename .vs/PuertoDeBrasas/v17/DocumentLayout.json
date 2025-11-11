@@ -1,42 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\",
+  "WorkspaceRootPath": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasas\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasaslogin\\puertodebrasas\\controladores\\reservacontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\controladores\\reservacontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\puertodebrasas\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasaslogin\\puertodebrasas\\controladores\\platocontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\controladores\\platocontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasas\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasaslogin\\puertodebrasas\\controladores\\clientecontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\controladores\\clientecontrolador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasaslogin\\puertodebrasas\\modelos\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\modelos\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasas\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasaslogin\\puertodebrasas\\modelos\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\modelos\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasas\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasaslogin\\puertodebrasas\\repositorios\\reservarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\repositorios\\reservarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasas\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasaslogin\\puertodebrasas\\repositorios\\platorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\repositorios\\platorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasas\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasaslogin\\puertodebrasas\\repositorios\\clienterepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\repositorios\\clienterepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\puertodebrasas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|c:\\users\\guido\\onedrive\\documentos\\puertodebrasas\\puertodebrasaslogin\\puertodebrasas\\vistas\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\vistas\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\puertodebrasas\\vistas\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\vistas\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\puertodebrasas\\vistas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9AED1B2B-5C6C-4569-828F-516E1F4CFFD8}|PuertoDeBrasas\\PuertoDeBrasas.csproj|solutionrelative:puertodebrasas\\vistas\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,21 +54,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 8,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "conexion.cs",
-              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\conexion.cs",
-              "RelativeDocumentMoniker": "PuertoDeBrasas\\conexion.cs",
-              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\conexion.cs",
-              "RelativeToolTip": "PuertoDeBrasas\\conexion.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAAB4AAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T23:11:35.91Z",
-              "IsPinned": true
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -71,100 +66,142 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Form2.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form2.Designer.cs",
-              "RelativeDocumentMoniker": "PuertoDeBrasas\\Form2.Designer.cs",
-              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form2.Designer.cs",
-              "RelativeToolTip": "PuertoDeBrasas\\Form2.Designer.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAAAOMAAAABAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "conexion.cs",
+              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Modelos\\conexion.cs",
+              "RelativeDocumentMoniker": "PuertoDeBrasas\\Modelos\\conexion.cs",
+              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Modelos\\conexion.cs",
+              "RelativeToolTip": "PuertoDeBrasas\\Modelos\\conexion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T20:00:56.306Z",
+              "WhenOpened": "2025-11-11T20:52:25.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Modelos\\Cliente.cs",
+              "RelativeDocumentMoniker": "PuertoDeBrasas\\Modelos\\Cliente.cs",
+              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Modelos\\Cliente.cs",
+              "RelativeToolTip": "PuertoDeBrasas\\Modelos\\Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T20:52:11.928Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ReservaRepositorio.cs",
+              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Repositorios\\ReservaRepositorio.cs",
+              "RelativeDocumentMoniker": "PuertoDeBrasas\\Repositorios\\ReservaRepositorio.cs",
+              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Repositorios\\ReservaRepositorio.cs",
+              "RelativeToolTip": "PuertoDeBrasas\\Repositorios\\ReservaRepositorio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T20:52:05.248Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "PuertoDeBrasas\\Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form1.Designer.cs",
-              "RelativeToolTip": "PuertoDeBrasas\\Form1.Designer.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAAKMAAAAAAAAAAAAAAA==",
+              "Title": "PlatoRepositorio.cs",
+              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Repositorios\\PlatoRepositorio.cs",
+              "RelativeDocumentMoniker": "PuertoDeBrasas\\Repositorios\\PlatoRepositorio.cs",
+              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Repositorios\\PlatoRepositorio.cs",
+              "RelativeToolTip": "PuertoDeBrasas\\Repositorios\\PlatoRepositorio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T23:39:39.185Z"
+              "WhenOpened": "2025-11-11T20:52:03.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ClienteRepositorio.cs",
+              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Repositorios\\ClienteRepositorio.cs",
+              "RelativeDocumentMoniker": "PuertoDeBrasas\\Repositorios\\ClienteRepositorio.cs",
+              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Repositorios\\ClienteRepositorio.cs",
+              "RelativeToolTip": "PuertoDeBrasas\\Repositorios\\ClienteRepositorio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T20:45:32.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Form3.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Vistas\\Form3.cs",
+              "RelativeDocumentMoniker": "PuertoDeBrasas\\Vistas\\Form3.cs",
+              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Vistas\\Form3.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PuertoDeBrasas\\Vistas\\Form3.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T00:07:43.03Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form3.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form3.cs",
-              "RelativeDocumentMoniker": "PuertoDeBrasas\\Form3.cs",
-              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form3.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PuertoDeBrasas\\Form3.cs [Dise\u00F1o]",
+              "Title": "ReservaControlador.cs",
+              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Controladores\\ReservaControlador.cs",
+              "RelativeDocumentMoniker": "PuertoDeBrasas\\Controladores\\ReservaControlador.cs",
+              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Controladores\\ReservaControlador.cs",
+              "RelativeToolTip": "PuertoDeBrasas\\Controladores\\ReservaControlador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T00:24:58.329Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form1.cs",
-              "RelativeDocumentMoniker": "PuertoDeBrasas\\Form1.cs",
-              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form1.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PuertoDeBrasas\\Form1.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T23:30:35.303Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form2.cs",
-              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form2.cs",
-              "RelativeDocumentMoniker": "PuertoDeBrasas\\Form2.cs",
-              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form2.cs",
-              "RelativeToolTip": "PuertoDeBrasas\\Form2.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAWwF4AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T22:04:27.131Z",
+              "WhenOpened": "2025-11-11T00:05:50.339Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Form2.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form2.cs",
-              "RelativeDocumentMoniker": "PuertoDeBrasas\\Form2.cs",
-              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form2.cs [Dise\u00F1o]",
-              "RelativeToolTip": "PuertoDeBrasas\\Form2.cs [Dise\u00F1o]",
+              "Title": "PlatoControlador.cs",
+              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Controladores\\PlatoControlador.cs",
+              "RelativeDocumentMoniker": "PuertoDeBrasas\\Controladores\\PlatoControlador.cs",
+              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Controladores\\PlatoControlador.cs",
+              "RelativeToolTip": "PuertoDeBrasas\\Controladores\\PlatoControlador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T00:08:00.764Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-11-11T00:05:05.697Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Form3.cs",
-              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form3.cs",
-              "RelativeDocumentMoniker": "PuertoDeBrasas\\Form3.cs",
-              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form3.cs",
-              "RelativeToolTip": "PuertoDeBrasas\\Form3.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAWwCsAAAAMAAAAAAAAAA==",
+              "Title": "ClienteControlador.cs",
+              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Controladores\\ClienteControlador.cs",
+              "RelativeDocumentMoniker": "PuertoDeBrasas\\Controladores\\ClienteControlador.cs",
+              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Controladores\\ClienteControlador.cs",
+              "RelativeToolTip": "PuertoDeBrasas\\Controladores\\ClienteControlador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T23:06:21.981Z"
+              "WhenOpened": "2025-11-11T00:04:42.884Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form1.cs",
-              "RelativeDocumentMoniker": "PuertoDeBrasas\\Form1.cs",
-              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasas\\Form1.cs",
-              "RelativeToolTip": "PuertoDeBrasas\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Vistas\\Form1.cs",
+              "RelativeDocumentMoniker": "PuertoDeBrasas\\Vistas\\Form1.cs",
+              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Vistas\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "PuertoDeBrasas\\Vistas\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T19:50:10.964Z"
+              "WhenOpened": "2025-11-11T00:08:04.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Form3.cs",
+              "DocumentMoniker": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Vistas\\Form3.cs",
+              "RelativeDocumentMoniker": "PuertoDeBrasas\\Vistas\\Form3.cs",
+              "ToolTip": "C:\\Users\\guido\\OneDrive\\Documentos\\PuertoDeBrasas\\PuertoDeBrasasLogin\\PuertoDeBrasas\\Vistas\\Form3.cs",
+              "RelativeToolTip": "PuertoDeBrasas\\Vistas\\Form3.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T00:31:08.493Z",
+              "EditorCaption": ""
             }
           ]
         }
