@@ -55,6 +55,7 @@
             groupBox1 = new GroupBox();
             checkedListBox1 = new CheckedListBox();
             label14 = new Label();
+            buttonReserva = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -70,7 +71,7 @@
             cerrarSesion.BackColor = Color.Red;
             cerrarSesion.FlatStyle = FlatStyle.Popup;
             cerrarSesion.ForeColor = SystemColors.ActiveCaptionText;
-            cerrarSesion.Location = new Point(1458, 5);
+            cerrarSesion.Location = new Point(1528, 5);
             cerrarSesion.Name = "cerrarSesion";
             cerrarSesion.Size = new Size(115, 34);
             cerrarSesion.TabIndex = 0;
@@ -237,18 +238,16 @@
             // 
             domainUpDown1.Location = new Point(1043, 743);
             domainUpDown1.Name = "domainUpDown1";
-            domainUpDown1.Size = new Size(157, 27);
+            domainUpDown1.Size = new Size(174, 27);
             domainUpDown1.TabIndex = 18;
-            domainUpDown1.Text = "10";
             domainUpDown1.SelectedItemChanged += domainUpDown1_SelectedItemChanged;
             // 
             // domainUpDown2
             // 
-            domainUpDown2.Location = new Point(1043, 812);
+            domainUpDown2.Location = new Point(1270, 743);
             domainUpDown2.Name = "domainUpDown2";
-            domainUpDown2.Size = new Size(157, 27);
+            domainUpDown2.Size = new Size(153, 27);
             domainUpDown2.TabIndex = 19;
-            domainUpDown2.Text = "domainUpDown2";
             // 
             // label10
             // 
@@ -287,7 +286,7 @@
             label13.AutoSize = true;
             label13.BackColor = Color.Peru;
             label13.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic);
-            label13.Location = new Point(1043, 786);
+            label13.Location = new Point(1270, 717);
             label13.Name = "label13";
             label13.Size = new Size(153, 23);
             label13.TabIndex = 31;
@@ -325,11 +324,12 @@
             // checkedListBox1
             // 
             checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Items.AddRange(new object[] { "Sandwich de bondiola", "Choripan", "Empanadas", "Bife de chorizo", "Cabutia", "Sandwich de cacío" });
+            checkedListBox1.Items.AddRange(new object[] { "Sandwich de bondiola", "Choripan", "Empanadas", "Bife de chorizo", "Cabutia", "Sandwich de vacío" });
             checkedListBox1.Location = new Point(6, 24);
             checkedListBox1.Name = "checkedListBox1";
             checkedListBox1.Size = new Size(299, 124);
             checkedListBox1.TabIndex = 0;
+            checkedListBox1.SelectedIndexChanged += checkedListBox1_SelectedIndexChanged;
             // 
             // label14
             // 
@@ -342,11 +342,22 @@
             label14.TabIndex = 35;
             label14.Text = "Elija un maximo de 3 opciones de nuestro menu";
             // 
+            // buttonReserva
+            // 
+            buttonReserva.Location = new Point(1043, 791);
+            buttonReserva.Name = "buttonReserva";
+            buttonReserva.Size = new Size(185, 48);
+            buttonReserva.TabIndex = 36;
+            buttonReserva.Text = "Reservar";
+            buttonReserva.UseVisualStyleBackColor = true;
+            buttonReserva.Click += buttonReserva_Click;
+            // 
             // Form3
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1577, 851);
+            ClientSize = new Size(1647, 847);
+            Controls.Add(buttonReserva);
             Controls.Add(label14);
             Controls.Add(groupBox1);
             Controls.Add(textBox1);
@@ -415,5 +426,6 @@
         private GroupBox groupBox1;
         private Label label14;
         private CheckedListBox checkedListBox1;
+        private Button buttonReserva;
     }
 }

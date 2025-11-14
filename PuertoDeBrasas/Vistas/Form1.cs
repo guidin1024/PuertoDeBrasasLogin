@@ -9,6 +9,7 @@ namespace PuertoDeBrasas
     public partial class Form1 : Form
     {
         private ClienteRepositorio clienteRepo;
+        public static Cliente? ClienteActual { get; set; }
 
         public Form1()
         {
@@ -38,7 +39,7 @@ namespace PuertoDeBrasas
 
                 if (cliente != null)
                 {
-                   
+                    ClienteActual = cliente;
 
                     Form3 form3 = new Form3();
                     form3.Show();

@@ -80,6 +80,7 @@ namespace PuertoDeBrasas.Data
                                 // Si el usuario existe, devolvemos un objeto Cliente
                                 return new Cliente
                                 {
+                                    ClienteID = reader.GetInt32("ClienteID"),
                                     Nombre = reader["nombre"].ToString(),
                                     CorreoElectronico = reader["correoElectronico"].ToString(),
                                     Clave = reader["clave"].ToString(),
