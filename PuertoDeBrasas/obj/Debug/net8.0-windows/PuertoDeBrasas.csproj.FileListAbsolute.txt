@@ -90,3 +90,4 @@ C:\Users\guido\OneDrive\Documentos\PuertoDeBrasas\PuertoDeBrasasLogin\PuertoDeBr
 C:\Users\guido\OneDrive\Documentos\PuertoDeBrasas\PuertoDeBrasasLogin\PuertoDeBrasas\obj\Debug\net8.0-windows\PuertoDeBrasas.genruntimeconfig.cache
 C:\Users\guido\OneDrive\Documentos\PuertoDeBrasas\PuertoDeBrasasLogin\PuertoDeBrasas\obj\Debug\net8.0-windows\ref\PuertoDeBrasas.dll
 C:\Users\guido\OneDrive\Documentos\PuertoDeBrasas\PuertoDeBrasasLogin\PuertoDeBrasas\obj\Debug\net8.0-windows\PuertoDeBrasas.Vistas.Form4.resources
+C:\Users\guido\OneDrive\Documentos\PuertoDeBrasas\PuertoDeBrasasLogin\PuertoDeBrasas\obj\Debug\net8.0-windows\PuertoDeBrasas.Vistas.FormAgregarPlato.resources

@@ -41,10 +41,20 @@ namespace PuertoDeBrasas
                 {
                     ClienteActual = cliente;
 
-                    Form3 form3 = new Form3();
-                    form3.Show();
+                    if (cliente.TipoCliente == "Administrador")
+                    {
+                        Vistas.Form4 admin = new Vistas.Form4();
+                        admin.Show();
+                    }
+                    else
+                    {
+                        Form3 reserva = new Form3();
+                        reserva.Show();
+                    }
+
                     this.Hide();
                 }
+            
                 else
                 {
                     MessageBox.Show("Correo o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

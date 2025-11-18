@@ -2,9 +2,11 @@
 using PuertoDeBrasas.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace PuertoDeBrasas.Repositorios
 {
@@ -55,6 +57,121 @@ namespace PuertoDeBrasas.Repositorios
                     {
                         transaction.Rollback();
                         throw new Exception("Error al crear la reserva: " + ex.Message, ex);
+                    }
+                }
+            }
+        }
+        // ⭐ AGREGAR ESTOS MÉTODOS AL FINAL:
+
+        public DataTable ObtenerTodasReservas()
+        {
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                string query = @"SELECT r.ReservaID, c.Nombre as Cliente, r.Dia, 
+                                r.Lugar, r.Hora_Inicio, r.Fecha_Fin, 
+                                'Pendiente' as Estado
+                                FROM reservas r
+                                INNER JOIN clientes c ON r.ClienteID = c.ClienteID
+                                ORDER BY r.Dia DESC";
+
+                var adapter = new MySqlDataAdapter(query, conn);
+                var dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+        }
+
+        public Reserva? ObtenerPorId(int reservaId)
+        {
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                string query = @"SELECT * FROM reservas WHERE ReservaID = @id";
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", reservaId);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Reserva
+                            {
+                                ReservaID = reader.GetInt32("ReservaID"),
+                                ClienteID = reader.GetInt32("ClienteID"),
+                                Dia = reader.GetDateTime("Dia"),
+                                Lugar = reader.GetString("Lugar"),
+                                HoraInicio = (TimeSpan)reader["Hora_Inicio"],
+                                HoraFin = (TimeSpan)reader["Fecha_Fin"]
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        public List<string> ObtenerMenusDeReserva(int reservaId)
+        {
+            var menus = new List<string>();
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                string query = @"SELECT m.NombrePlato 
+                                FROM reservamenu rm
+                                INNER JOIN menu m ON rm.MenuID = m.MenuID
+                                WHERE rm.ReservaID = @id";
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", reservaId);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            menus.Add(reader.GetString("NombrePlato"));
+                        }
+                    }
+                }
+            }
+            return menus;
+        }
+
+        public bool EliminarReserva(int reservaId)
+        {
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // Primero eliminar de reservamenu
+                        string queryMenu = "DELETE FROM reservamenu WHERE ReservaID = @id";
+                        using (var cmd = new MySqlCommand(queryMenu, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@id", reservaId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // Luego eliminar la reserva
+                        string queryReserva = "DELETE FROM reservas WHERE ReservaID = @id";
+                        using (var cmd = new MySqlCommand(queryReserva, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@id", reservaId);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
                     }
                 }
             }
