@@ -24,14 +24,14 @@ DROP TABLE IF EXISTS `clientes`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `clientes` (
   `ClienteID` int NOT NULL AUTO_INCREMENT,
-  `TipoCliente` enum('Persona','Empresa') NOT NULL,
+  `TipoCliente` enum('Persona','Empresa','Administrador') DEFAULT NULL,
   `Nombre` varchar(100) NOT NULL,
   `CorreoElectronico` varchar(100) NOT NULL,
   `Telefono` varchar(20) DEFAULT NULL,
   `Clave` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`ClienteID`),
   UNIQUE KEY `CorreoElectronico` (`CorreoElectronico`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'Persona','Pereyra Guido','abc@gmail.com','2914416222','12345'),(2,'Persona','jajaja jijiji','jaji@gmail.com','2915115553','jijija'),(3,'Persona','a','a@gmail.com','2914416221','a'),(4,'Persona','guidin pereyra','12345@gmail.com','1234567890','12345'),(5,'Persona','Burgos Santiago','santiagoburgos1506@gmail.com','2914744567','171715'),(6,'Persona','pepe grilo','pepe@gmail.com','1234567890','1234567');
+INSERT INTO `clientes` VALUES (1,'Persona','Pereyra Guido','abc@gmail.com','2914416222','12345'),(2,'Persona','jajaja jijiji','jaji@gmail.com','2915115553','jijija'),(3,'Persona','a','a@gmail.com','2914416221','a'),(4,'Persona','guidin pereyra','12345@gmail.com','1234567890','12345'),(5,'Persona','Burgos Santiago','santiagoburgos1506@gmail.com','2914744567','171715'),(6,'Persona','pepe grilo','pepe@gmail.com','1234567890','1234567'),(8,'Empresa','Pereyra Ruben Dario','dario@gmail.com','2914416221','12345'),(9,'Administrador','Administrador','admin@test.com','0000000000','admin');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,60 +70,6 @@ LOCK TABLES `empleados` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `eventomenu`
---
-
-DROP TABLE IF EXISTS `eventomenu`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `eventomenu` (
-  `EventoID` int NOT NULL,
-  `MenuID` int NOT NULL,
-  `Cantidad` int NOT NULL DEFAULT '1',
-  PRIMARY KEY (`EventoID`,`MenuID`),
-  KEY `MenuID` (`MenuID`),
-  CONSTRAINT `eventomenu_ibfk_1` FOREIGN KEY (`EventoID`) REFERENCES `eventos` (`EventoID`),
-  CONSTRAINT `eventomenu_ibfk_2` FOREIGN KEY (`MenuID`) REFERENCES `menu` (`MenuID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `eventomenu`
---
-
-LOCK TABLES `eventomenu` WRITE;
-/*!40000 ALTER TABLE `eventomenu` DISABLE KEYS */;
-/*!40000 ALTER TABLE `eventomenu` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `eventos`
---
-
-DROP TABLE IF EXISTS `eventos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `eventos` (
-  `EventoID` int NOT NULL AUTO_INCREMENT,
-  `ClienteID` int NOT NULL,
-  `Fecha` date NOT NULL,
-  `Lugar` varchar(200) NOT NULL,
-  PRIMARY KEY (`EventoID`),
-  KEY `ClienteID` (`ClienteID`),
-  CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`ClienteID`) REFERENCES `clientes` (`ClienteID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `eventos`
---
-
-LOCK TABLES `eventos` WRITE;
-/*!40000 ALTER TABLE `eventos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `eventos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `materiaprima`
 --
 
@@ -139,7 +85,7 @@ CREATE TABLE `materiaprima` (
   PRIMARY KEY (`MateriaPrimaID`),
   KEY `ProveedorID` (`ProveedorID`),
   CONSTRAINT `materiaprima_ibfk_1` FOREIGN KEY (`ProveedorID`) REFERENCES `proveedores` (`ProveedorID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,6 +94,7 @@ CREATE TABLE `materiaprima` (
 
 LOCK TABLES `materiaprima` WRITE;
 /*!40000 ALTER TABLE `materiaprima` DISABLE KEYS */;
+INSERT INTO `materiaprima` VALUES (4,'Carne vacuna',50,'kg',1),(5,'Pan',100,'unidades',2),(6,'Verduras',30,'kg',1);
 /*!40000 ALTER TABLE `materiaprima` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,10 +108,9 @@ DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu` (
   `MenuID` int NOT NULL AUTO_INCREMENT,
   `NombrePlato` varchar(100) NOT NULL,
-  `Descripcion` varchar(255) DEFAULT NULL,
   `Precio` decimal(10,2) NOT NULL,
   PRIMARY KEY (`MenuID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,6 +119,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` VALUES (1,'Sandwich de bondiola',40000.00),(2,'Choripan',20000.00),(3,'Empanadas',35000.00),(4,'Bife de chorizo',40000.00),(5,'Cabutia',10000.00),(6,'Sandwich de vacío',50000.00);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +136,7 @@ CREATE TABLE `proveedores` (
   `Telefono` varchar(20) DEFAULT NULL,
   `CorreoElectronico` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ProveedorID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,7 +145,66 @@ CREATE TABLE `proveedores` (
 
 LOCK TABLES `proveedores` WRITE;
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
+INSERT INTO `proveedores` VALUES (1,'Frigorífico del Sur','2915551234','ventas@frigosur.com'),(2,'Panadería La Esperanza','2915555678','pedidos@laesperanza.com'),(3,'Frigorífico del Sur','2915551234','ventas@frigosur.com'),(4,'Panadería La Esperanza','2915555678','pedidos@laesperanza.com');
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reservamenu`
+--
+
+DROP TABLE IF EXISTS `reservamenu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `reservamenu` (
+  `ReservaID` int NOT NULL,
+  `MenuID` int NOT NULL,
+  `Cantidad` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`ReservaID`,`MenuID`),
+  KEY `MenuID` (`MenuID`),
+  CONSTRAINT `reservamenu_ibfk_1` FOREIGN KEY (`ReservaID`) REFERENCES `reservas` (`ReservaID`),
+  CONSTRAINT `reservamenu_ibfk_2` FOREIGN KEY (`MenuID`) REFERENCES `menu` (`MenuID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reservamenu`
+--
+
+LOCK TABLES `reservamenu` WRITE;
+/*!40000 ALTER TABLE `reservamenu` DISABLE KEYS */;
+INSERT INTO `reservamenu` VALUES (1,1,1),(1,2,1),(1,3,1),(2,1,1),(2,3,1),(2,5,1),(3,5,1);
+/*!40000 ALTER TABLE `reservamenu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reservas`
+--
+
+DROP TABLE IF EXISTS `reservas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `reservas` (
+  `ReservaID` int NOT NULL AUTO_INCREMENT,
+  `ClienteID` int NOT NULL,
+  `Dia` date NOT NULL,
+  `Lugar` varchar(200) NOT NULL,
+  `Hora_Inicio` varchar(100) DEFAULT NULL,
+  `Fecha_Fin` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ReservaID`),
+  KEY `ClienteID` (`ClienteID`),
+  CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`ClienteID`) REFERENCES `clientes` (`ClienteID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reservas`
+--
+
+LOCK TABLES `reservas` WRITE;
+/*!40000 ALTER TABLE `reservas` DISABLE KEYS */;
+INSERT INTO `reservas` VALUES (1,3,'2025-11-28','sandungarai','0 10:00:00.000000','0 16:00:00.000000'),(2,3,'2025-11-14','Sta. Maria 4312','0 11:00:00.000000','0 23:00:00.000000'),(3,3,'2025-11-14','a','0 10:00:00.000000','0 11:00:00.000000');
+/*!40000 ALTER TABLE `reservas` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -214,4 +220,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-11-05 21:20:46
+-- Dump completed on 2025-11-20 17:23:31
