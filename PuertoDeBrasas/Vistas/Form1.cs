@@ -20,6 +20,8 @@ namespace PuertoDeBrasas
             this.BackgroundImage = img;
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
+            this.FormClosing += Form1_FormClosing;
+
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -73,6 +75,10 @@ namespace PuertoDeBrasas
             this.Hide();
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
 
     }
 }

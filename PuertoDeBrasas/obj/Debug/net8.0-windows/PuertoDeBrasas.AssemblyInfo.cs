@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PuertoDeBrasas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c788959bb569577dbd9a993c37b65feddae34c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c54b7456019682ee63261969f94a78f4b1c99499")]
 [assembly: System.Reflection.AssemblyProductAttribute("PuertoDeBrasas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PuertoDeBrasas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

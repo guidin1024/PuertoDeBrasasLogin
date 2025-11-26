@@ -23,6 +23,8 @@ namespace PuertoDeBrasas.Vistas
 
             ConfigurarFormulario();
             CargarDatos();
+
+            this.FormClosing += Form4_FormClosing;
         }
 
         private void ConfigurarFormulario()
@@ -145,7 +147,6 @@ namespace PuertoDeBrasas.Vistas
                 {
                     var item = new ListViewItem(plato.MenuID.ToString());
                     item.SubItems.Add(plato.NombrePlato);
-                    item.SubItems.Add(plato.Descripcion);
                     item.SubItems.Add($"${plato.Precio:F2}");
                     item.Tag = plato;
                     listaMenu.Items.Add(item);
@@ -280,6 +281,11 @@ namespace PuertoDeBrasas.Vistas
         private void btnCambiarContrasena_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Función de cambio de contraseña en desarrollo.", "Info");
+        }
+
+        private void Form4_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PuertoDeBrasas.Modelos;
 
-
 namespace PuertoDeBrasas.Vistas
 {
     public partial class FormAgregarPlato : Form
@@ -23,14 +22,14 @@ namespace PuertoDeBrasas.Vistas
             if (platoExistente != null)
             {
                 txtNombre.Text = platoExistente.NombrePlato;
-                txtDescripcion.Text = platoExistente.Descripcion;
-                txtPrecio.Text = platoExistente.Precio.ToString();
+                txtPrecio.Text = platoExistente.Precio.ToString("F2");
                 this.Text = "Editar Plato";
                 PlatoNuevo = platoExistente;
             }
             else
             {
                 PlatoNuevo = new Plato();
+                this.Text = "Agregar Plato";
             }
         }
 
@@ -38,18 +37,21 @@ namespace PuertoDeBrasas.Vistas
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
-                MessageBox.Show("Ingresa el nombre del plato.");
+                MessageBox.Show("Ingresa el nombre del plato.", "Campo requerido",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNombre.Focus();
                 return;
             }
 
             if (!decimal.TryParse(txtPrecio.Text, out decimal precio) || precio <= 0)
             {
-                MessageBox.Show("Ingresa un precio válido.");
+                MessageBox.Show("Ingresa un precio válido.", "Precio inválido",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPrecio.Focus();
                 return;
             }
 
             PlatoNuevo.NombrePlato = txtNombre.Text.Trim();
-            PlatoNuevo.Descripcion = txtDescripcion.Text.Trim();
             PlatoNuevo.Precio = precio;
 
             this.DialogResult = DialogResult.OK;

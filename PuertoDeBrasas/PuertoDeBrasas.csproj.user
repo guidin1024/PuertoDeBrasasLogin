@@ -16,5 +16,8 @@
     <Compile Update="Vistas\FormAgregarPlato.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Vistas\FormEditarReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

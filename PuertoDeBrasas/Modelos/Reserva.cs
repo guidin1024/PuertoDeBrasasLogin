@@ -14,5 +14,6 @@ namespace PuertoDeBrasas.Modelos
         public string Lugar { get; set; } = "";
         public TimeSpan HoraInicio { get; set; }
         public TimeSpan HoraFin { get; set; }
+        public string Estado { get; set; } = "Pendiente";
     }
 }

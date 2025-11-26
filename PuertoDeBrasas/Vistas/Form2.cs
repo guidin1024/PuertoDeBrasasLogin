@@ -18,6 +18,7 @@ namespace PuertoDeBrasas
             this.BackgroundImage = img;
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
+            this.FormClosing += Form2_FormClosing;
 
         }
 
@@ -76,7 +77,7 @@ namespace PuertoDeBrasas
 
                     Form1 login = new Form1();
                     login.Show();
-                    this.Close();
+                    this.Hide();
                 }
                 else
                 {
@@ -93,7 +94,12 @@ namespace PuertoDeBrasas
         {
             Form1 login = new Form1();
             login.Show();
-            this.Close();
+            this.Hide();
+        }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
