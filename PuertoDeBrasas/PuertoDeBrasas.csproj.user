@@ -13,6 +13,9 @@
     <Compile Update="Vistas\Form4.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Vistas\FormAgregarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Vistas\FormAgregarPlato.cs">
       <SubType>Form</SubType>
     </Compile>

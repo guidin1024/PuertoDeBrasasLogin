@@ -26,21 +26,10 @@
             btnAgregarMenu = new Button();
             btnEditarMenu = new Button();
             btnActivar = new Button();
-            groupMateria = new GroupBox();
-            lblStockActual = new Label();
-            btnRegistrarCompra = new Button();
-            btnEditarProveedores = new Button();
-            lblAlerta = new Label();
-            groupConfig = new GroupBox();
-            btnCambiarPrecios = new Button();
-            btnDefinirHorario = new Button();
-            btnCambiarContrasena = new Button();
             lblUsuario = new Label();
             groupReservas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)listaReservas).BeginInit();
             groupMenu.SuspendLayout();
-            groupMateria.SuspendLayout();
-            groupConfig.SuspendLayout();
             SuspendLayout();
 
             // groupReservas
@@ -52,7 +41,7 @@
             groupReservas.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             groupReservas.Location = new Point(20, 20);
             groupReservas.Name = "groupReservas";
-            groupReservas.Size = new Size(450, 260);
+            groupReservas.Size = new Size(980, 400);
             groupReservas.TabIndex = 0;
             groupReservas.TabStop = false;
             groupReservas.Text = "Gestión de Reservas";
@@ -65,39 +54,55 @@
             listaReservas.Name = "listaReservas";
             listaReservas.ReadOnly = true;
             listaReservas.RowHeadersWidth = 51;
-            listaReservas.Size = new Size(410, 160);
+            listaReservas.Size = new Size(940, 300);
             listaReservas.TabIndex = 0;
 
             // btnAceptar
-            btnAceptar.Location = new Point(20, 200);
+            btnAceptar.BackColor = Color.FromArgb(46, 125, 50);
+            btnAceptar.FlatStyle = FlatStyle.Flat;
+            btnAceptar.ForeColor = Color.White;
+            btnAceptar.Location = new Point(20, 345);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(90, 30);
+            btnAceptar.Size = new Size(120, 35);
             btnAceptar.TabIndex = 1;
-            btnAceptar.Text = "Aceptar";
+            btnAceptar.Text = "✓ Aceptar";
+            btnAceptar.UseVisualStyleBackColor = false;
             btnAceptar.Click += new EventHandler(this.btnAceptar_Click);
 
             // btnRechazar
-            btnRechazar.Location = new Point(120, 200);
+            btnRechazar.BackColor = Color.FromArgb(211, 47, 47);
+            btnRechazar.FlatStyle = FlatStyle.Flat;
+            btnRechazar.ForeColor = Color.White;
+            btnRechazar.Location = new Point(150, 345);
             btnRechazar.Name = "btnRechazar";
-            btnRechazar.Size = new Size(90, 30);
+            btnRechazar.Size = new Size(120, 35);
             btnRechazar.TabIndex = 2;
-            btnRechazar.Text = "Rechazar";
+            btnRechazar.Text = "✗ Rechazar";
+            btnRechazar.UseVisualStyleBackColor = false;
             btnRechazar.Click += new EventHandler(this.btnRechazar_Click);
 
             // btnEditarReserva
-            btnEditarReserva.Location = new Point(220, 200);
+            btnEditarReserva.BackColor = Color.FromArgb(255, 152, 0);
+            btnEditarReserva.FlatStyle = FlatStyle.Flat;
+            btnEditarReserva.ForeColor = Color.White;
+            btnEditarReserva.Location = new Point(280, 345);
             btnEditarReserva.Name = "btnEditarReserva";
-            btnEditarReserva.Size = new Size(90, 30);
+            btnEditarReserva.Size = new Size(120, 35);
             btnEditarReserva.TabIndex = 3;
-            btnEditarReserva.Text = "Editar...";
+            btnEditarReserva.Text = "✎ Editar";
+            btnEditarReserva.UseVisualStyleBackColor = false;
             btnEditarReserva.Click += new EventHandler(this.btnEditarReserva_Click);
 
             // btnVerDetalles
-            btnVerDetalles.Location = new Point(320, 200);
+            btnVerDetalles.BackColor = Color.FromArgb(33, 150, 243);
+            btnVerDetalles.FlatStyle = FlatStyle.Flat;
+            btnVerDetalles.ForeColor = Color.White;
+            btnVerDetalles.Location = new Point(410, 345);
             btnVerDetalles.Name = "btnVerDetalles";
-            btnVerDetalles.Size = new Size(110, 30);
+            btnVerDetalles.Size = new Size(140, 35);
             btnVerDetalles.TabIndex = 4;
-            btnVerDetalles.Text = "Ver Detalles...";
+            btnVerDetalles.Text = "🔍 Ver Detalles";
+            btnVerDetalles.UseVisualStyleBackColor = false;
             btnVerDetalles.Click += new EventHandler(this.btnVerDetalles_Click);
 
             // groupMenu
@@ -106,139 +111,134 @@
             groupMenu.Controls.Add(btnEditarMenu);
             groupMenu.Controls.Add(btnActivar);
             groupMenu.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            groupMenu.Location = new Point(500, 20);
+            groupMenu.Location = new Point(20, 440);
             groupMenu.Name = "groupMenu";
-            groupMenu.Size = new Size(520, 260);
+            groupMenu.Size = new Size(480, 300);
             groupMenu.TabIndex = 1;
             groupMenu.TabStop = false;
             groupMenu.Text = "Gestión del Menú";
 
             // listaMenu
-            listaMenu.Location = new Point(25, 35);
+            listaMenu.FullRowSelect = true;
+            listaMenu.GridLines = true;
+            listaMenu.Location = new Point(15, 35);
             listaMenu.Name = "listaMenu";
-            listaMenu.Size = new Size(470, 160);
+            listaMenu.Size = new Size(450, 200);
             listaMenu.TabIndex = 0;
             listaMenu.UseCompatibleStateImageBehavior = false;
             listaMenu.View = View.Details;
 
             // btnAgregarMenu
-            btnAgregarMenu.Location = new Point(25, 205);
+            btnAgregarMenu.BackColor = Color.FromArgb(46, 125, 50);
+            btnAgregarMenu.FlatStyle = FlatStyle.Flat;
+            btnAgregarMenu.ForeColor = Color.White;
+            btnAgregarMenu.Location = new Point(15, 245);
             btnAgregarMenu.Name = "btnAgregarMenu";
-            btnAgregarMenu.Size = new Size(120, 30);
+            btnAgregarMenu.Size = new Size(135, 35);
             btnAgregarMenu.TabIndex = 1;
-            btnAgregarMenu.Text = "Agregar...";
+            btnAgregarMenu.Text = "+ Agregar";
+            btnAgregarMenu.UseVisualStyleBackColor = false;
             btnAgregarMenu.Click += new EventHandler(this.btnAgregarMenu_Click);
 
             // btnEditarMenu
-            btnEditarMenu.Location = new Point(155, 205);
+            btnEditarMenu.BackColor = Color.FromArgb(255, 152, 0);
+            btnEditarMenu.FlatStyle = FlatStyle.Flat;
+            btnEditarMenu.ForeColor = Color.White;
+            btnEditarMenu.Location = new Point(160, 245);
             btnEditarMenu.Name = "btnEditarMenu";
-            btnEditarMenu.Size = new Size(120, 30);
+            btnEditarMenu.Size = new Size(135, 35);
             btnEditarMenu.TabIndex = 2;
-            btnEditarMenu.Text = "Editar...";
+            btnEditarMenu.Text = "✎ Editar";
+            btnEditarMenu.UseVisualStyleBackColor = false;
             btnEditarMenu.Click += new EventHandler(this.btnEditarMenu_Click);
 
             // btnActivar
-            btnActivar.Location = new Point(285, 205);
+            btnActivar.BackColor = Color.FromArgb(211, 47, 47);
+            btnActivar.FlatStyle = FlatStyle.Flat;
+            btnActivar.ForeColor = Color.White;
+            btnActivar.Location = new Point(305, 245);
             btnActivar.Name = "btnActivar";
-            btnActivar.Size = new Size(150, 30);
+            btnActivar.Size = new Size(135, 35);
             btnActivar.TabIndex = 3;
-            btnActivar.Text = "Eliminar";
+            btnActivar.Text = "🗑 Eliminar";
+            btnActivar.UseVisualStyleBackColor = false;
             btnActivar.Click += new EventHandler(this.btnActivar_Click);
 
-            // groupMateria
-            groupMateria.Controls.Add(lblStockActual);
-            groupMateria.Controls.Add(btnRegistrarCompra);
-            groupMateria.Controls.Add(btnEditarProveedores);
-            groupMateria.Controls.Add(lblAlerta);
-            groupMateria.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            groupMateria.Location = new Point(20, 300);
-            groupMateria.Name = "groupMateria";
-            groupMateria.Size = new Size(450, 200);
-            groupMateria.TabIndex = 2;
-            groupMateria.TabStop = false;
-            groupMateria.Text = "Gestión de Materia Prima y Proveedores";
+            // groupClientes
+            groupClientes = new GroupBox();
+            groupClientes.Controls.Add(listaClientes);
+            groupClientes.Controls.Add(btnAgregarCliente);
+            groupClientes.Controls.Add(btnEditarCliente);
+            groupClientes.Controls.Add(btnEliminarCliente);
+            groupClientes.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            groupClientes.Location = new Point(520, 440);
+            groupClientes.Name = "groupClientes";
+            groupClientes.Size = new Size(480, 300);
+            groupClientes.TabIndex = 2;
+            groupClientes.TabStop = false;
+            groupClientes.Text = "Gestión de Clientes y Administradores";
 
-            // lblStockActual
-            lblStockActual.Location = new Point(20, 40);
-            lblStockActual.Name = "lblStockActual";
-            lblStockActual.Size = new Size(200, 25);
-            lblStockActual.TabIndex = 0;
-            lblStockActual.Text = "Stock actual: Cargando...";
+            // listaClientes
+            listaClientes.FullRowSelect = true;
+            listaClientes.GridLines = true;
+            listaClientes.Location = new Point(15, 35);
+            listaClientes.Name = "listaClientes";
+            listaClientes.Size = new Size(450, 200);
+            listaClientes.TabIndex = 0;
+            listaClientes.UseCompatibleStateImageBehavior = false;
+            listaClientes.View = View.Details;
 
-            // btnRegistrarCompra
-            btnRegistrarCompra.Location = new Point(20, 80);
-            btnRegistrarCompra.Name = "btnRegistrarCompra";
-            btnRegistrarCompra.Size = new Size(180, 30);
-            btnRegistrarCompra.TabIndex = 1;
-            btnRegistrarCompra.Text = "Registrar compra...";
-            btnRegistrarCompra.Click += new EventHandler(this.btnRegistrarCompra_Click);
+            // btnAgregarCliente
+            btnAgregarCliente.BackColor = Color.FromArgb(46, 125, 50);
+            btnAgregarCliente.FlatStyle = FlatStyle.Flat;
+            btnAgregarCliente.ForeColor = Color.White;
+            btnAgregarCliente.Location = new Point(15, 245);
+            btnAgregarCliente.Name = "btnAgregarCliente";
+            btnAgregarCliente.Size = new Size(135, 35);
+            btnAgregarCliente.TabIndex = 1;
+            btnAgregarCliente.Text = "+ Agregar";
+            btnAgregarCliente.UseVisualStyleBackColor = false;
+            btnAgregarCliente.Click += new EventHandler(this.btnAgregarCliente_Click);
 
-            // btnEditarProveedores
-            btnEditarProveedores.Location = new Point(20, 120);
-            btnEditarProveedores.Name = "btnEditarProveedores";
-            btnEditarProveedores.Size = new Size(180, 30);
-            btnEditarProveedores.TabIndex = 2;
-            btnEditarProveedores.Text = "Editar proveedores...";
-            btnEditarProveedores.Click += new EventHandler(this.btnEditarProveedores_Click);
+            // btnEditarCliente
+            btnEditarCliente.BackColor = Color.FromArgb(255, 152, 0);
+            btnEditarCliente.FlatStyle = FlatStyle.Flat;
+            btnEditarCliente.ForeColor = Color.White;
+            btnEditarCliente.Location = new Point(160, 245);
+            btnEditarCliente.Name = "btnEditarCliente";
+            btnEditarCliente.Size = new Size(135, 35);
+            btnEditarCliente.TabIndex = 2;
+            btnEditarCliente.Text = "✎ Editar";
+            btnEditarCliente.UseVisualStyleBackColor = false;
+            btnEditarCliente.Click += new EventHandler(this.btnEditarCliente_Click);
 
-            // lblAlerta
-            lblAlerta.AutoSize = true;
-            lblAlerta.Location = new Point(20, 160);
-            lblAlerta.Name = "lblAlerta";
-            lblAlerta.Size = new Size(0, 23);
-            lblAlerta.TabIndex = 3;
-
-            // groupConfig
-            groupConfig.Controls.Add(btnCambiarPrecios);
-            groupConfig.Controls.Add(btnDefinirHorario);
-            groupConfig.Controls.Add(btnCambiarContrasena);
-            groupConfig.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            groupConfig.Location = new Point(500, 300);
-            groupConfig.Name = "groupConfig";
-            groupConfig.Size = new Size(520, 200);
-            groupConfig.TabIndex = 3;
-            groupConfig.TabStop = false;
-            groupConfig.Text = "Configuración General";
-
-            // btnCambiarPrecios
-            btnCambiarPrecios.Location = new Point(30, 50);
-            btnCambiarPrecios.Name = "btnCambiarPrecios";
-            btnCambiarPrecios.Size = new Size(200, 30);
-            btnCambiarPrecios.TabIndex = 0;
-            btnCambiarPrecios.Text = "Cambiar precios...";
-            btnCambiarPrecios.Click += new EventHandler(this.btnCambiarPrecios_Click);
-
-            // btnDefinirHorario
-            btnDefinirHorario.Location = new Point(30, 90);
-            btnDefinirHorario.Name = "btnDefinirHorario";
-            btnDefinirHorario.Size = (Size)new Point(200, 30);
-            btnDefinirHorario.TabIndex = 1;
-            btnDefinirHorario.Text = "Definir horario eventos...";
-            btnDefinirHorario.Click += new EventHandler(this.btnDefinirHorario_Click);
-
-            // btnCambiarContrasena
-            btnCambiarContrasena.Location = new Point(30, 130);
-            btnCambiarContrasena.Name = "btnCambiarContrasena";
-            btnCambiarContrasena.Size = new Size(200, 30);
-            btnCambiarContrasena.TabIndex = 2;
-            btnCambiarContrasena.Text = "Cambiar contraseña...";
-            btnCambiarContrasena.Click += new EventHandler(this.btnCambiarContrasena_Click);
+            // btnEliminarCliente
+            btnEliminarCliente.BackColor = Color.FromArgb(211, 47, 47);
+            btnEliminarCliente.FlatStyle = FlatStyle.Flat;
+            btnEliminarCliente.ForeColor = Color.White;
+            btnEliminarCliente.Location = new Point(305, 245);
+            btnEliminarCliente.Name = "btnEliminarCliente";
+            btnEliminarCliente.Size = new Size(135, 35);
+            btnEliminarCliente.TabIndex = 3;
+            btnEliminarCliente.Text = "🗑 Eliminar";
+            btnEliminarCliente.UseVisualStyleBackColor = false;
+            btnEliminarCliente.Click += new EventHandler(this.btnEliminarCliente_Click);
 
             // lblUsuario
             lblUsuario.AutoSize = true;
-            lblUsuario.Location = new Point(750, 510);
+            lblUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblUsuario.Location = new Point(780, 750);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(200, 20);
-            lblUsuario.TabIndex = 4;
+            lblUsuario.Size = new Size(200, 23);
+            lblUsuario.TabIndex = 3;
             lblUsuario.Text = "Usuario: Cargando...";
 
             // Form4
-            this.ClientSize = new Size(1071, 580);
-            this.Controls.Add(groupReservas);
-            this.Controls.Add(groupMenu);
-            this.Controls.Add(groupMateria);
-            this.Controls.Add(groupConfig);
+            this.ClientSize = new Size(1030, 790);
             this.Controls.Add(lblUsuario);
+            this.Controls.Add(groupClientes);
+            this.Controls.Add(groupMenu);
+            this.Controls.Add(groupReservas);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form4";
@@ -247,9 +247,7 @@
             groupReservas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)listaReservas).EndInit();
             groupMenu.ResumeLayout(false);
-            groupMateria.ResumeLayout(false);
-            groupConfig.ResumeLayout(false);
-            groupConfig.PerformLayout();
+            groupClientes.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
         }
@@ -265,15 +263,11 @@
         private Button btnAgregarMenu;
         private Button btnEditarMenu;
         private Button btnActivar;
-        private GroupBox groupMateria;
-        private Label lblStockActual;
-        private Button btnRegistrarCompra;
-        private Button btnEditarProveedores;
-        private Label lblAlerta;
-        private GroupBox groupConfig;
-        private Button btnCambiarPrecios;
-        private Button btnDefinirHorario;
-        private Button btnCambiarContrasena;
+        private GroupBox groupClientes;
+        private ListView listaClientes;
+        private Button btnAgregarCliente;
+        private Button btnEditarCliente;
+        private Button btnEliminarCliente;
         private Label lblUsuario;
     }
 }

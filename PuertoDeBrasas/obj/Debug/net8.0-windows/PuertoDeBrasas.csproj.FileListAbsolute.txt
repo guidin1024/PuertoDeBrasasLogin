@@ -92,3 +92,4 @@ C:\Users\guido\OneDrive\Documentos\PuertoDeBrasas\PuertoDeBrasasLogin\PuertoDeBr
 C:\Users\guido\OneDrive\Documentos\PuertoDeBrasas\PuertoDeBrasasLogin\PuertoDeBrasas\obj\Debug\net8.0-windows\PuertoDeBrasas.Vistas.Form4.resources
 C:\Users\guido\OneDrive\Documentos\PuertoDeBrasas\PuertoDeBrasasLogin\PuertoDeBrasas\obj\Debug\net8.0-windows\PuertoDeBrasas.Vistas.FormAgregarPlato.resources
 C:\Users\guido\OneDrive\Documentos\PuertoDeBrasas\PuertoDeBrasasLogin\PuertoDeBrasas\obj\Debug\net8.0-windows\PuertoDeBrasas.Vistas.FormEditarReserva.resources
+C:\Users\guido\OneDrive\Documentos\PuertoDeBrasas\PuertoDeBrasasLogin\PuertoDeBrasas\obj\Debug\net8.0-windows\PuertoDeBrasas.Vistas.FormAgregarCliente.resources
