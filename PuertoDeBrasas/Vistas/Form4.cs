@@ -134,11 +134,13 @@ namespace PuertoDeBrasas.Vistas
                     string estado = reserva.Estado ?? "Pendiente";
 
                     MessageBox.Show(
-                        $"📅 Fecha: {reserva.Dia:dd/MM/yyyy}\n" +
+                        $"🆔 ID Cliente: {reserva.ClienteID}\n" +
                         $"📍 Lugar: {reserva.Lugar}\n" +
-                        $"🕐 Horario: {reserva.HoraInicio:hh\\:mm} - {reserva.HoraFin:hh\\:mm}\n" +
+                        $"📅 Fecha: {reserva.Dia:dd/MM/yyyy}\n" +
+                        $"🕐 Hora Inicio: {reserva.HoraInicio:hh\\:mm}\n" +
+                        $"🕐 Hora Fin: {reserva.HoraFin:hh\\:mm}\n" +
                         $"📋 Estado: {estado}\n\n" +
-                        $"🍽️ Menú seleccionado:\n• {menusStr}",
+                        $"🍽️ Platos elegidos:\n• {menusStr}",
                         "Detalles de la Reserva",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -264,6 +266,48 @@ namespace PuertoDeBrasas.Vistas
             {
                 MessageBox.Show("Error al editar reserva: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEliminarReserva_Click(object sender, EventArgs e)
+        {
+            if (listaReservas.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, selecciona una reserva para eliminar.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var result = MessageBox.Show(
+                "¿Estás seguro de que deseas eliminar esta reserva?\n\n" +
+                "Esta acción eliminará permanentemente la reserva y no se puede deshacer.",
+                "Confirmar Eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    int reservaId = Convert.ToInt32(listaReservas.SelectedRows[0].Cells["ReservaID"].Value);
+
+                    if (reservaRepo.EliminarReserva(reservaId))
+                    {
+                        MessageBox.Show("✅ Reserva eliminada exitosamente.", "Éxito",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarReservas();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo eliminar la reserva.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar la reserva: " + ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -404,7 +448,7 @@ namespace PuertoDeBrasas.Vistas
             Application.Exit();
         }
 
-        // === GESTIÓN DE CLIENTES ===
+        // === GESTIÓN DE CLIENTES - INLINE (SIN FormAgregarCliente) ===
 
         private void CargarClientes()
         {
@@ -432,30 +476,102 @@ namespace PuertoDeBrasas.Vistas
 
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            using (var form = new FormAgregarCliente())
+            // Solicitar datos mediante InputBox personalizado
+            string nombre = PromptInput("Ingrese el nombre completo:", "Agregar Cliente");
+            if (string.IsNullOrWhiteSpace(nombre)) return;
+
+            string email = PromptInput("Ingrese el correo electrónico (formato: usuario@gmail.com):", "Agregar Cliente");
+            if (string.IsNullOrWhiteSpace(email)) return;
+
+            string telefono = PromptInput("Ingrese el teléfono (10 dígitos):", "Agregar Cliente");
+            if (string.IsNullOrWhiteSpace(telefono)) return;
+
+            string clave = PromptInput("Ingrese la contraseña (mínimo 4 caracteres):", "Agregar Cliente");
+            if (string.IsNullOrWhiteSpace(clave)) return;
+
+            // Seleccionar tipo de cliente
+            var tipoResult = MessageBox.Show(
+                "Seleccione el tipo de cliente:\n\n" +
+                "SÍ = Empresa\n" +
+                "NO = Persona\n" +
+                "CANCELAR = Administrador",
+                "Tipo de Cliente",
+                MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Question);
+
+            if (tipoResult == DialogResult.Cancel)
             {
-                if (form.ShowDialog() == DialogResult.OK)
+                var confirmAdmin = MessageBox.Show(
+                    "¿Confirma que desea crear una cuenta de Administrador?",
+                    "Confirmar Administrador",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (confirmAdmin == DialogResult.No) return;
+            }
+
+            string tipo = tipoResult == DialogResult.Yes ? "Empresa" :
+                          tipoResult == DialogResult.No ? "Persona" : "Administrador";
+
+            // Validar nombre (solo letras y espacios)
+            if (!System.Text.RegularExpressions.Regex.IsMatch(nombre, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            {
+                MessageBox.Show("El nombre solo puede contener letras y espacios.", "Nombre inválido",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar email
+            if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[a-zA-Z0-9]+@gmail\.com$"))
+            {
+                MessageBox.Show("El correo debe tener el formato 'usuario@gmail.com'.", "Email inválido",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar teléfono
+            if (!System.Text.RegularExpressions.Regex.IsMatch(telefono, @"^\d{10}$"))
+            {
+                MessageBox.Show("El teléfono debe contener exactamente 10 números.", "Teléfono inválido",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar contraseña
+            if (clave.Length < 4)
+            {
+                MessageBox.Show("La contraseña debe tener al menos 4 caracteres.", "Contraseña inválida",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var nuevoCliente = new Cliente
+            {
+                Nombre = nombre,
+                CorreoElectronico = email,
+                Telefono = telefono,
+                Clave = clave,
+                TipoCliente = tipo
+            };
+
+            try
+            {
+                if (clienteRepo.Registrar(nuevoCliente))
                 {
-                    try
-                    {
-                        if (clienteRepo.Registrar(form.ClienteNuevo))
-                        {
-                            MessageBox.Show("✅ Cliente agregado exitosamente.", "Éxito",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            CargarClientes();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo agregar el cliente.", "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message, "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show("✅ Cliente agregado exitosamente.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarClientes();
                 }
+                else
+                {
+                    MessageBox.Show("No se pudo agregar el cliente.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -469,30 +585,61 @@ namespace PuertoDeBrasas.Vistas
             }
 
             var cliente = (Cliente)listaClientes.SelectedItems[0].Tag;
-            using (var form = new FormAgregarCliente(cliente))
+
+            // Editar campos
+            string nombre = PromptInput("Nombre completo:", "Editar Cliente", cliente.Nombre);
+            if (string.IsNullOrWhiteSpace(nombre)) return;
+
+            string email = PromptInput("Correo electrónico:", "Editar Cliente", cliente.CorreoElectronico);
+            if (string.IsNullOrWhiteSpace(email)) return;
+
+            string telefono = PromptInput("Teléfono (10 dígitos):", "Editar Cliente", cliente.Telefono);
+            if (string.IsNullOrWhiteSpace(telefono)) return;
+
+            // Validaciones
+            if (!System.Text.RegularExpressions.Regex.IsMatch(nombre, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
             {
-                if (form.ShowDialog() == DialogResult.OK)
+                MessageBox.Show("El nombre solo puede contener letras y espacios.", "Nombre inválido",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[a-zA-Z0-9]+@gmail\.com$"))
+            {
+                MessageBox.Show("El correo debe tener el formato 'usuario@gmail.com'.", "Email inválido",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(telefono, @"^\d{10}$"))
+            {
+                MessageBox.Show("El teléfono debe contener exactamente 10 números.", "Teléfono inválido",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            cliente.Nombre = nombre;
+            cliente.CorreoElectronico = email;
+            cliente.Telefono = telefono;
+
+            try
+            {
+                if (clienteRepo.Actualizar(cliente))
                 {
-                    try
-                    {
-                        if (clienteRepo.Actualizar(form.ClienteNuevo))
-                        {
-                            MessageBox.Show("✅ Cliente actualizado exitosamente.", "Éxito",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            CargarClientes();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo actualizar el cliente.", "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message, "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show("✅ Cliente actualizado exitosamente.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarClientes();
                 }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar el cliente.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -551,6 +698,38 @@ namespace PuertoDeBrasas.Vistas
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        // Helper para input simple (reemplazo de FormAgregarCliente)
+        private string PromptInput(string prompt, string title, string defaultValue = "")
+        {
+            Form promptForm = new Form()
+            {
+                Width = 500,
+                Height = 150,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = title,
+                StartPosition = FormStartPosition.CenterParent,
+                MaximizeBox = false,
+                MinimizeBox = false
+            };
+
+            Label textLabel = new Label() { Left = 20, Top = 20, Text = prompt, Width = 440 };
+            TextBox textBox = new TextBox() { Left = 20, Top = 50, Width = 440, Text = defaultValue };
+            Button confirmation = new Button() { Text = "OK", Left = 280, Width = 80, Top = 80, DialogResult = DialogResult.OK };
+            Button cancel = new Button() { Text = "Cancelar", Left = 370, Width = 90, Top = 80, DialogResult = DialogResult.Cancel };
+
+            confirmation.Click += (sender, e) => { promptForm.Close(); };
+            cancel.Click += (sender, e) => { promptForm.Close(); };
+
+            promptForm.Controls.Add(textLabel);
+            promptForm.Controls.Add(textBox);
+            promptForm.Controls.Add(confirmation);
+            promptForm.Controls.Add(cancel);
+            promptForm.AcceptButton = confirmation;
+            promptForm.CancelButton = cancel;
+
+            return promptForm.ShowDialog() == DialogResult.OK ? textBox.Text : null;
         }
     }
 }

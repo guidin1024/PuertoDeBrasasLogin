@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
+
 namespace PuertoDeBrasas
 {
     public partial class Form3 : Form
     {
         private ReservaRepositorio reservaRepo;
+        private PlatoRepositorio platoRepo;
 
         public Form3()
         {
@@ -19,8 +21,8 @@ namespace PuertoDeBrasas
             this.StartPosition = FormStartPosition.CenterScreen;
 
             reservaRepo = new ReservaRepositorio();
+            platoRepo = new PlatoRepositorio();
 
-            // Configurar componentes
             ConfigurarCalendario();
             ConfigurarDomainUpDowns();
             ConfigurarCheckedListBox();
@@ -28,47 +30,68 @@ namespace PuertoDeBrasas
 
         private void ConfigurarCalendario()
         {
-            // Configurar el calendario para solo fechas futuras
             monthCalendar1.MinDate = DateTime.Today;
             monthCalendar1.MaxSelectionCount = 1;
         }
 
         private void ConfigurarDomainUpDowns()
         {
-            // Configurar horas de inicio (10:00 a 23:00)
             domainUpDown1.Items.Clear();
             for (int hora = 10; hora <= 23; hora++)
             {
                 domainUpDown1.Items.Add($"{hora:D2}:00");
             }
-            domainUpDown1.SelectedIndex = 0; // Por defecto 10:00
+            domainUpDown1.SelectedIndex = 0;
             domainUpDown1.ReadOnly = true;
 
-            // Configurar horas de fin (11:00 a 00:00)
             domainUpDown2.Items.Clear();
             for (int hora = 11; hora <= 23; hora++)
             {
                 domainUpDown2.Items.Add($"{hora:D2}:00");
             }
-            domainUpDown2.Items.Add("00:00"); // Medianoche
-            domainUpDown2.SelectedIndex = 0; // Por defecto 11:00
+            domainUpDown2.Items.Add("00:00");
+            domainUpDown2.SelectedIndex = 0;
             domainUpDown2.ReadOnly = true;
         }
 
         private void ConfigurarCheckedListBox()
         {
-            // Evitar que se seleccionen más de 3 items
+            // Control dinámico según si "Cabutia" está seleccionada
             checkedListBox1.ItemCheck += (s, e) =>
             {
                 if (e.NewValue == CheckState.Checked)
                 {
+                    // Contar cuántos items están checked actualmente (sin incluir el que se está checkeando)
                     int cantidadSeleccionada = checkedListBox1.CheckedItems.Count;
 
-                    if (cantidadSeleccionada >= 3)
+                    // Verificar si "Cabutia" está entre los seleccionados o si es el item que se está seleccionando
+                    bool cabutiaSeleccionada = false;
+                    for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                    {
+                        if (i == e.Index && checkedListBox1.Items[i].ToString() == "Cabutia")
+                        {
+                            cabutiaSeleccionada = true;
+                            break;
+                        }
+                        else if (checkedListBox1.GetItemChecked(i) && checkedListBox1.Items[i].ToString() == "Cabutia")
+                        {
+                            cabutiaSeleccionada = true;
+                            break;
+                        }
+                    }
+
+                    // Máximo permitido: 3 normal, 4 si incluye Cabutia
+                    int maximoPermitido = cabutiaSeleccionada ? 4 : 3;
+
+                    if (cantidadSeleccionada >= maximoPermitido)
                     {
                         e.NewValue = CheckState.Unchecked;
-                        MessageBox.Show("Solo puedes seleccionar un máximo de 3 opciones del menú.",
-                            "Máximo alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        string mensaje = cabutiaSeleccionada
+                            ? "Ya seleccionaste el máximo de 4 opciones (incluyendo Cabutia)."
+                            : "Solo puedes seleccionar un máximo de 3 opciones.\n\nSi incluyes Cabutia, podrás seleccionar 4 opciones.";
+
+                        MessageBox.Show(mensaje, "Máximo alcanzado",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             };
@@ -83,6 +106,18 @@ namespace PuertoDeBrasas
                 {
                     MessageBox.Show("No hay un cliente autenticado. Por favor, inicia sesión nuevamente.",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Verificar si el cliente ya tiene una reserva pendiente o aceptada
+                if (reservaRepo.TieneReservaPendiente(Form1.ClienteActual.ClienteID))
+                {
+                    MessageBox.Show(
+                        "Ya tienes una reserva pendiente o aceptada.\n\n" +
+                        "Solo puedes hacer una nueva reserva si tu reserva anterior ha sido rechazada o completada.",
+                        "Reserva Existente",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -122,6 +157,46 @@ namespace PuertoDeBrasas
                     return;
                 }
 
+                // Obtener IDs y calcular precio total
+                var menusSeleccionados = new List<int>();
+                decimal precioTotal = 0;
+                var todosPlatos = platoRepo.ObtenerTodos();
+
+                foreach (string itemNombre in checkedListBox1.CheckedItems)
+                {
+                    int menuId = MapearNombreAMenuID(itemNombre);
+                    if (menuId > 0)
+                    {
+                        menusSeleccionados.Add(menuId);
+
+                        // Buscar el precio del plato
+                        var plato = todosPlatos.FirstOrDefault(p => p.MenuID == menuId);
+                        if (plato != null)
+                        {
+                            precioTotal += plato.Precio;
+                        }
+                    }
+                }
+
+                // Mostrar confirmación con precio total
+                string platosStr = string.Join(", ", checkedListBox1.CheckedItems.Cast<string>());
+                var confirmacion = MessageBox.Show(
+                    $"📋 RESUMEN DE LA RESERVA\n\n" +
+                    $"📅 Fecha: {fechaSeleccionada:dd/MM/yyyy}\n" +
+                    $"🕐 Horario: {horaInicioStr} - {horaFinStr}\n" +
+                    $"📍 Lugar: {direccion}\n" +
+                    $"🍽️ Platos: {platosStr}\n\n" +
+                    $"💰 PRECIO TOTAL: ${precioTotal:N2}\n\n" +
+                    $"¿Confirmar reserva?",
+                    "Confirmar Reserva",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmacion == DialogResult.No)
+                {
+                    return;
+                }
+
                 // Crear objeto Reserva
                 var reserva = new Reserva
                 {
@@ -132,26 +207,18 @@ namespace PuertoDeBrasas
                     HoraFin = horaFin
                 };
 
-                // Obtener IDs de los menús seleccionados (MapearNombreAMenuID)
-                var menusSeleccionados = new List<int>();
-                foreach (string item in checkedListBox1.CheckedItems)
-                {
-                    int menuId = MapearNombreAMenuID(item);
-                    if (menuId > 0)
-                        menusSeleccionados.Add(menuId);
-                }
-
                 // Guardar en la base de datos
                 bool exito = reservaRepo.CrearReserva(reserva, menusSeleccionados);
 
                 if (exito)
                 {
-                    MessageBox.Show($"¡Reserva confirmada!\n\n" +
-                        $"Fecha: {fechaSeleccionada:dd/MM/yyyy}\n" +
-                        $"Horario: {horaInicioStr} - {horaFinStr}\n" +
-                        $"Lugar: {direccion}\n" +
-                        $"Platos: {checkedListBox1.CheckedItems.Count}",
-                        "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(
+                        $"¡Reserva confirmada exitosamente!\n\n" +
+                        $"Precio total: ${precioTotal:N2}\n\n" +
+                        $"Tu reserva está en estado PENDIENTE y será revisada por el administrador.",
+                        "Éxito",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
 
                     LimpiarFormulario();
                 }
@@ -165,8 +232,6 @@ namespace PuertoDeBrasas
 
         private int MapearNombreAMenuID(string nombrePlato)
         {
-            // Mapear los nombres a los IDs de tu base de datos
-            // Ajusta estos IDs según tu tabla 'menu'
             var mapeo = new Dictionary<string, int>
             {
                 { "Sandwich de bondiola", 1 },
@@ -174,7 +239,7 @@ namespace PuertoDeBrasas
                 { "Empanadas", 3 },
                 { "Bife de chorizo", 4 },
                 { "Cabutia", 5 },
-                { "Sandwich de cacío", 6 }
+                { "Sandwich de vacío", 6 }
             };
 
             return mapeo.ContainsKey(nombrePlato) ? mapeo[nombrePlato] : 0;
@@ -197,7 +262,6 @@ namespace PuertoDeBrasas
         {
             this.Hide();
 
-            // Limpiar sesión
             Form1.ClienteActual = null;
 
             Form1 form1 = new Form1();
@@ -220,17 +284,14 @@ namespace PuertoDeBrasas
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            // Evento vacío (puedes agregar funcionalidad si quieres)
         }
 
         private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
         {
-            // Evento vacío (puedes agregar funcionalidad si quieres)
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

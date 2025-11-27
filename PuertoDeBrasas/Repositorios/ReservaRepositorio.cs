@@ -4,10 +4,38 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 
+
 namespace PuertoDeBrasas.Repositorios
 {
     public class ReservaRepositorio : BaseRepositorio
     {
+        // Verificar si el cliente tiene una reserva pendiente o aceptada
+        public bool TieneReservaPendiente(int clienteId)
+        {
+            try
+            {
+                using (var conn = GetConnection())
+                {
+                    conn.Open();
+                    string query = @"SELECT COUNT(*) FROM reservas 
+                                   WHERE ClienteID = @clienteId 
+                                   AND (Estado = 'Pendiente' OR Estado = 'Aceptado')";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@clienteId", clienteId);
+                        long count = (long)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return false;
+            }
+        }
+
         public bool CrearReserva(Reserva reserva, List<int> menusSeleccionados)
         {
             using (var conn = GetConnection())

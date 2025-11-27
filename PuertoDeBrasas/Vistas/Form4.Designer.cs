@@ -21,15 +21,22 @@
             btnRechazar = new Button();
             btnEditarReserva = new Button();
             btnVerDetalles = new Button();
+            btnEliminarReserva = new Button();
             groupMenu = new GroupBox();
             listaMenu = new ListView();
             btnAgregarMenu = new Button();
             btnEditarMenu = new Button();
             btnActivar = new Button();
+            groupClientes = new GroupBox();
+            listaClientes = new ListView();
+            btnAgregarCliente = new Button();
+            btnEditarCliente = new Button();
+            btnEliminarCliente = new Button();
             lblUsuario = new Label();
             groupReservas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)listaReservas).BeginInit();
             groupMenu.SuspendLayout();
+            groupClientes.SuspendLayout();
             SuspendLayout();
 
             // groupReservas
@@ -38,6 +45,7 @@
             groupReservas.Controls.Add(btnRechazar);
             groupReservas.Controls.Add(btnEditarReserva);
             groupReservas.Controls.Add(btnVerDetalles);
+            groupReservas.Controls.Add(btnEliminarReserva);
             groupReservas.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             groupReservas.Location = new Point(20, 20);
             groupReservas.Name = "groupReservas";
@@ -105,6 +113,18 @@
             btnVerDetalles.UseVisualStyleBackColor = false;
             btnVerDetalles.Click += new EventHandler(this.btnVerDetalles_Click);
 
+            // btnEliminarReserva
+            btnEliminarReserva.BackColor = Color.FromArgb(244, 67, 54);
+            btnEliminarReserva.FlatStyle = FlatStyle.Flat;
+            btnEliminarReserva.ForeColor = Color.White;
+            btnEliminarReserva.Location = new Point(560, 345);
+            btnEliminarReserva.Name = "btnEliminarReserva";
+            btnEliminarReserva.Size = new Size(140, 35);
+            btnEliminarReserva.TabIndex = 5;
+            btnEliminarReserva.Text = "🗑 Eliminar";
+            btnEliminarReserva.UseVisualStyleBackColor = false;
+            
+
             // groupMenu
             groupMenu.Controls.Add(listaMenu);
             groupMenu.Controls.Add(btnAgregarMenu);
@@ -165,7 +185,6 @@
             btnActivar.Click += new EventHandler(this.btnActivar_Click);
 
             // groupClientes
-            groupClientes = new GroupBox();
             groupClientes.Controls.Add(listaClientes);
             groupClientes.Controls.Add(btnAgregarCliente);
             groupClientes.Controls.Add(btnEditarCliente);
@@ -258,6 +277,7 @@
         private Button btnRechazar;
         private Button btnEditarReserva;
         private Button btnVerDetalles;
+        private Button btnEliminarReserva;
         private GroupBox groupMenu;
         private ListView listaMenu;
         private Button btnAgregarMenu;
