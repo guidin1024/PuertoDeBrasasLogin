@@ -4,7 +4,6 @@ using PuertoDeBrasas.Repositorios;
 using System;
 using System.Windows.Forms;
 
-
 namespace PuertoDeBrasas.Vistas
 {
     public partial class Form4 : Form
@@ -128,43 +127,21 @@ namespace PuertoDeBrasas.Vistas
                 int reservaId = Convert.ToInt32(listaReservas.SelectedRows[0].Cells["ReservaID"].Value);
                 var reserva = reservaRepo.ObtenerPorId(reservaId);
                 var menus = reservaRepo.ObtenerMenusDeReserva(reservaId);
-                var todosPlatos = platoRepo.ObtenerTodos();
 
                 if (reserva != null)
                 {
                     string menusStr = string.Join("\n• ", menus);
                     string estado = reserva.Estado ?? "Pendiente";
 
-                    // Calcular precio total
-                    decimal precioTotal = 0;
-                    foreach (var nombrePlato in menus)
-                    {
-                        var plato = todosPlatos.FirstOrDefault(p => p.NombrePlato == nombrePlato);
-                        if (plato != null)
-                        {
-                            precioTotal += plato.Precio;
-                        }
-                    }
-
-                    // Obtener nombre del cliente
-                    string nombreCliente = listaReservas.SelectedRows[0].Cells["Cliente"].Value.ToString() ?? "";
-                    string telefonoCliente = listaReservas.SelectedRows[0].Cells["TelefonoCliente"].Value.ToString() ?? "";
-
                     MessageBox.Show(
-                        $"═══════════════════════════════════════\n" +
-                        $"           DETALLES DE LA RESERVA\n" +
-                        $"═══════════════════════════════════════\n\n" +
-                        $"👤 Cliente: {nombreCliente}\n" +
-                        $"📱 Teléfono: {telefonoCliente}\n" +
-                        $"🆔 ID Reserva: {reserva.ReservaID}\n\n" +
-                        $"📍 Lugar del Evento:\n   {reserva.Lugar}\n\n" +
-                        $"📅 Fecha: {reserva.Dia:dddd, dd/MM/yyyy}\n" +
-                        $"🕐 Horario: {reserva.HoraInicio:hh\\:mm} - {reserva.HoraFin:hh\\:mm}\n\n" +
-                        $"📋 Estado: {estado.ToUpper()}\n\n" +
-                        $"🍽️ Menú Seleccionado:\n• {menusStr}\n\n" +
-                        $"💰 Precio Total: ${precioTotal:N2}\n" +
-                        $"═══════════════════════════════════════",
-                        "🔥 Puerto de Brasas - Detalles de Reserva",
+                        $"🆔 ID Cliente: {reserva.ClienteID}\n" +
+                        $"📍 Lugar: {reserva.Lugar}\n" +
+                        $"📅 Fecha: {reserva.Dia:dd/MM/yyyy}\n" +
+                        $"🕐 Hora Inicio: {reserva.HoraInicio:hh\\:mm}\n" +
+                        $"🕐 Hora Fin: {reserva.HoraFin:hh\\:mm}\n" +
+                        $"📋 Estado: {estado}\n\n" +
+                        $"🍽️ Platos elegidos:\n• {menusStr}",
+                        "Detalles de la Reserva",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
@@ -266,28 +243,41 @@ namespace PuertoDeBrasas.Vistas
 
                 if (reserva != null)
                 {
-                    using (var formEditar = new FormEditarReserva(reserva))
+                    MessageBox.Show($"DEBUG: Abriendo formulario de edición para reserva ID: {reservaId}", "Debug");
+
+                    var formEditar = new FormEditarReserva(reserva);
+                    var resultado = formEditar.ShowDialog();
+
+                    MessageBox.Show($"DEBUG: Resultado del diálogo: {resultado}", "Debug");
+
+                    if (resultado == DialogResult.OK)
                     {
-                        if (formEditar.ShowDialog() == DialogResult.OK)
+                        // Usar el método que también actualiza el menú
+                        if (reservaRepo.ActualizarReservaConMenu(formEditar.ReservaEditada, formEditar.MenusSeleccionados))
                         {
-                            if (reservaRepo.ActualizarReserva(formEditar.ReservaEditada))
-                            {
-                                MessageBox.Show("✅ Reserva actualizada exitosamente.", "Éxito",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                CargarReservas();
-                            }
-                            else
-                            {
-                                MessageBox.Show("No se pudo actualizar la reserva.", "Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            MessageBox.Show("✅ Reserva actualizada exitosamente.", "Éxito",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CargarReservas();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo actualizar la reserva.", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+
+                    formEditar.Dispose();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo obtener la información de la reserva.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al editar reserva: " + ex.Message, "Error",
+                MessageBox.Show("Error al editar reserva: " + ex.Message + "\n\nStack Trace:\n" + ex.StackTrace,
+                    "Error Detallado",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -127,25 +127,69 @@ namespace PuertoDeBrasas.Repositorios
                 using (var conn = GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT * FROM reservas WHERE ReservaID = @id";
+                    string query = @"SELECT 
+                        ReservaID, 
+                        ClienteID, 
+                        Dia, 
+                        Lugar, 
+                        Hora_Inicio, 
+                        Fecha_Fin,
+                        COALESCE(Estado, 'Pendiente') as Estado
+                        FROM reservas 
+                        WHERE ReservaID = @id";
 
                     using (var cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@id", reservaId);
+
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                return new Reserva
+                                // Obtener los valores y convertirlos
+                                var reserva = new Reserva
                                 {
                                     ReservaID = reader.GetInt32("ReservaID"),
                                     ClienteID = reader.GetInt32("ClienteID"),
                                     Dia = reader.GetDateTime("Dia"),
                                     Lugar = reader.GetString("Lugar"),
-                                    HoraInicio = (TimeSpan)reader["Hora_Inicio"],
-                                    HoraFin = (TimeSpan)reader["Fecha_Fin"],
                                     Estado = reader["Estado"]?.ToString() ?? "Pendiente"
                                 };
+
+                                // Convertir Hora_Inicio y Fecha_Fin de string a TimeSpan
+                                var horaInicioStr = reader["Hora_Inicio"]?.ToString();
+                                var fechaFinStr = reader["Fecha_Fin"]?.ToString();
+
+                                // Parsear las cadenas de tiempo
+                                if (!string.IsNullOrEmpty(horaInicioStr))
+                                {
+                                    // Si es formato "0 HH:MM:SS.000000", extraer solo HH:MM:SS
+                                    if (horaInicioStr.Contains(" "))
+                                    {
+                                        var partes = horaInicioStr.Split(' ');
+                                        if (partes.Length > 1)
+                                        {
+                                            horaInicioStr = partes[1].Split('.')[0]; // Obtener HH:MM:SS
+                                        }
+                                    }
+                                    reserva.HoraInicio = TimeSpan.Parse(horaInicioStr);
+                                }
+
+                                if (!string.IsNullOrEmpty(fechaFinStr))
+                                {
+                                    // Si es formato "0 HH:MM:SS.000000", extraer solo HH:MM:SS
+                                    if (fechaFinStr.Contains(" "))
+                                    {
+                                        var partes = fechaFinStr.Split(' ');
+                                        if (partes.Length > 1)
+                                        {
+                                            fechaFinStr = partes[1].Split('.')[0]; // Obtener HH:MM:SS
+                                        }
+                                    }
+                                    reserva.HoraFin = TimeSpan.Parse(fechaFinStr);
+                                }
+
+                                return reserva;
                             }
                         }
                     }
@@ -153,7 +197,8 @@ namespace PuertoDeBrasas.Repositorios
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("Error en ObtenerPorId: " + ex.Message);
+                Console.WriteLine("Stack Trace: " + ex.StackTrace);
             }
             return null;
         }

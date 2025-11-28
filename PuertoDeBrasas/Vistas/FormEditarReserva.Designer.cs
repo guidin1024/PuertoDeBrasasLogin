@@ -211,7 +211,10 @@
         private System.Windows.Forms.ComboBox comboHoraInicio;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboHoraFin;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckedListBox checkedListMenu;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.GroupBox groupBoxMenu;
     }
 }
