@@ -1,0 +1,7 @@
+Usuario:
+Guido@gmail.com
+Contraseña12345
+
+Administrador:
+admin@test.com
+admin
