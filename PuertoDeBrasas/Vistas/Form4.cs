@@ -4,6 +4,7 @@ using PuertoDeBrasas.Repositorios;
 using System;
 using System.Windows.Forms;
 
+
 namespace PuertoDeBrasas.Vistas
 {
     public partial class Form4 : Form
@@ -43,19 +44,19 @@ namespace PuertoDeBrasas.Vistas
 
             // Configurar ListView de menú
             listaMenu.Columns.Clear();
-            listaMenu.Columns.Add("ID", 50);
-            listaMenu.Columns.Add("Nombre del Plato", 200);
-            listaMenu.Columns.Add("Precio", 100);
+            listaMenu.Columns.Add("ID", 80);
+            listaMenu.Columns.Add("Nombre del Plato", 320);
+            listaMenu.Columns.Add("Precio", 150);
             listaMenu.FullRowSelect = true;
             listaMenu.View = View.Details;
             listaMenu.GridLines = true;
 
             // Configurar ListView de clientes
             listaClientes.Columns.Clear();
-            listaClientes.Columns.Add("ID", 50);
-            listaClientes.Columns.Add("Tipo", 100);
-            listaClientes.Columns.Add("Nombre", 150);
-            listaClientes.Columns.Add("Email", 150);
+            listaClientes.Columns.Add("ID", 80);
+            listaClientes.Columns.Add("Tipo", 150);
+            listaClientes.Columns.Add("Nombre", 200);
+            listaClientes.Columns.Add("Email", 200);
             listaClientes.FullRowSelect = true;
             listaClientes.View = View.Details;
             listaClientes.GridLines = true;
@@ -127,21 +128,43 @@ namespace PuertoDeBrasas.Vistas
                 int reservaId = Convert.ToInt32(listaReservas.SelectedRows[0].Cells["ReservaID"].Value);
                 var reserva = reservaRepo.ObtenerPorId(reservaId);
                 var menus = reservaRepo.ObtenerMenusDeReserva(reservaId);
+                var todosPlatos = platoRepo.ObtenerTodos();
 
                 if (reserva != null)
                 {
                     string menusStr = string.Join("\n• ", menus);
                     string estado = reserva.Estado ?? "Pendiente";
 
+                    // Calcular precio total
+                    decimal precioTotal = 0;
+                    foreach (var nombrePlato in menus)
+                    {
+                        var plato = todosPlatos.FirstOrDefault(p => p.NombrePlato == nombrePlato);
+                        if (plato != null)
+                        {
+                            precioTotal += plato.Precio;
+                        }
+                    }
+
+                    // Obtener nombre del cliente
+                    string nombreCliente = listaReservas.SelectedRows[0].Cells["Cliente"].Value.ToString() ?? "";
+                    string telefonoCliente = listaReservas.SelectedRows[0].Cells["TelefonoCliente"].Value.ToString() ?? "";
+
                     MessageBox.Show(
-                        $"🆔 ID Cliente: {reserva.ClienteID}\n" +
-                        $"📍 Lugar: {reserva.Lugar}\n" +
-                        $"📅 Fecha: {reserva.Dia:dd/MM/yyyy}\n" +
-                        $"🕐 Hora Inicio: {reserva.HoraInicio:hh\\:mm}\n" +
-                        $"🕐 Hora Fin: {reserva.HoraFin:hh\\:mm}\n" +
-                        $"📋 Estado: {estado}\n\n" +
-                        $"🍽️ Platos elegidos:\n• {menusStr}",
-                        "Detalles de la Reserva",
+                        $"═══════════════════════════════════════\n" +
+                        $"           DETALLES DE LA RESERVA\n" +
+                        $"═══════════════════════════════════════\n\n" +
+                        $"👤 Cliente: {nombreCliente}\n" +
+                        $"📱 Teléfono: {telefonoCliente}\n" +
+                        $"🆔 ID Reserva: {reserva.ReservaID}\n\n" +
+                        $"📍 Lugar del Evento:\n   {reserva.Lugar}\n\n" +
+                        $"📅 Fecha: {reserva.Dia:dddd, dd/MM/yyyy}\n" +
+                        $"🕐 Horario: {reserva.HoraInicio:hh\\:mm} - {reserva.HoraFin:hh\\:mm}\n\n" +
+                        $"📋 Estado: {estado.ToUpper()}\n\n" +
+                        $"🍽️ Menú Seleccionado:\n• {menusStr}\n\n" +
+                        $"💰 Precio Total: ${precioTotal:N2}\n" +
+                        $"═══════════════════════════════════════",
+                        "🔥 Puerto de Brasas - Detalles de Reserva",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
@@ -443,12 +466,7 @@ namespace PuertoDeBrasas.Vistas
             }
         }
 
-        private void Form4_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        // === GESTIÓN DE CLIENTES - INLINE (SIN FormAgregarCliente) ===
+        // === GESTIÓN DE CLIENTES ===
 
         private void CargarClientes()
         {
@@ -476,7 +494,6 @@ namespace PuertoDeBrasas.Vistas
 
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            // Solicitar datos mediante InputBox personalizado
             string nombre = PromptInput("Ingrese el nombre completo:", "Agregar Cliente");
             if (string.IsNullOrWhiteSpace(nombre)) return;
 
@@ -489,7 +506,6 @@ namespace PuertoDeBrasas.Vistas
             string clave = PromptInput("Ingrese la contraseña (mínimo 4 caracteres):", "Agregar Cliente");
             if (string.IsNullOrWhiteSpace(clave)) return;
 
-            // Seleccionar tipo de cliente
             var tipoResult = MessageBox.Show(
                 "Seleccione el tipo de cliente:\n\n" +
                 "SÍ = Empresa\n" +
@@ -513,7 +529,6 @@ namespace PuertoDeBrasas.Vistas
             string tipo = tipoResult == DialogResult.Yes ? "Empresa" :
                           tipoResult == DialogResult.No ? "Persona" : "Administrador";
 
-            // Validar nombre (solo letras y espacios)
             if (!System.Text.RegularExpressions.Regex.IsMatch(nombre, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
             {
                 MessageBox.Show("El nombre solo puede contener letras y espacios.", "Nombre inválido",
@@ -521,7 +536,6 @@ namespace PuertoDeBrasas.Vistas
                 return;
             }
 
-            // Validar email
             if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[a-zA-Z0-9]+@gmail\.com$"))
             {
                 MessageBox.Show("El correo debe tener el formato 'usuario@gmail.com'.", "Email inválido",
@@ -529,7 +543,6 @@ namespace PuertoDeBrasas.Vistas
                 return;
             }
 
-            // Validar teléfono
             if (!System.Text.RegularExpressions.Regex.IsMatch(telefono, @"^\d{10}$"))
             {
                 MessageBox.Show("El teléfono debe contener exactamente 10 números.", "Teléfono inválido",
@@ -537,7 +550,6 @@ namespace PuertoDeBrasas.Vistas
                 return;
             }
 
-            // Validar contraseña
             if (clave.Length < 4)
             {
                 MessageBox.Show("La contraseña debe tener al menos 4 caracteres.", "Contraseña inválida",
@@ -586,7 +598,6 @@ namespace PuertoDeBrasas.Vistas
 
             var cliente = (Cliente)listaClientes.SelectedItems[0].Tag;
 
-            // Editar campos
             string nombre = PromptInput("Nombre completo:", "Editar Cliente", cliente.Nombre);
             if (string.IsNullOrWhiteSpace(nombre)) return;
 
@@ -596,7 +607,6 @@ namespace PuertoDeBrasas.Vistas
             string telefono = PromptInput("Teléfono (10 dígitos):", "Editar Cliente", cliente.Telefono);
             if (string.IsNullOrWhiteSpace(telefono)) return;
 
-            // Validaciones
             if (!System.Text.RegularExpressions.Regex.IsMatch(nombre, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
             {
                 MessageBox.Show("El nombre solo puede contener letras y espacios.", "Nombre inválido",
@@ -654,7 +664,6 @@ namespace PuertoDeBrasas.Vistas
 
             var cliente = (Cliente)listaClientes.SelectedItems[0].Tag;
 
-            // No permitir eliminar administradores o el usuario actual
             if (cliente.TipoCliente == "Administrador")
             {
                 MessageBox.Show("No se puede eliminar cuentas de administrador.", "Acción no permitida",
@@ -700,7 +709,30 @@ namespace PuertoDeBrasas.Vistas
             }
         }
 
-        // Helper para input simple (reemplazo de FormAgregarCliente)
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+                "¿Estás seguro de que deseas cerrar sesión?",
+                "Confirmar Cierre de Sesión",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Form1.ClienteActual = null;
+
+                Form1 loginForm = new Form1();
+                loginForm.Show();
+
+                this.Hide();
+            }
+        }
+
+        private void Form4_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
         private string PromptInput(string prompt, string title, string defaultValue = "")
         {
             Form promptForm = new Form()

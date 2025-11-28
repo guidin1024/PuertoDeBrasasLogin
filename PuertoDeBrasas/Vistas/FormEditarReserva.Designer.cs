@@ -25,8 +25,12 @@
             this.comboHoraInicio = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboHoraFin = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkedListMenu = new System.Windows.Forms.CheckedListBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.groupBoxMenu = new System.Windows.Forms.GroupBox();
+            this.groupBoxMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -63,7 +67,7 @@
             this.txtLugar.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtLugar.Location = new System.Drawing.Point(150, 67);
             this.txtLugar.Name = "txtLugar";
-            this.txtLugar.Size = new System.Drawing.Size(250, 30);
+            this.txtLugar.Size = new System.Drawing.Size(300, 30);
             this.txtLugar.TabIndex = 3;
             // 
             // label3
@@ -90,7 +94,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(20, 170);
+            this.label4.Location = new System.Drawing.Point(290, 120);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 23);
             this.label4.TabIndex = 6;
@@ -101,44 +105,79 @@
             this.comboHoraFin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboHoraFin.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.comboHoraFin.FormattingEnabled = true;
-            this.comboHoraFin.Location = new System.Drawing.Point(150, 167);
+            this.comboHoraFin.Location = new System.Drawing.Point(380, 117);
             this.comboHoraFin.Name = "comboHoraFin";
             this.comboHoraFin.Size = new System.Drawing.Size(120, 31);
             this.comboHoraFin.TabIndex = 7;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(6, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(290, 23);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Selecciona hasta 4 platos (máximo):";
+            // 
+            // checkedListMenu
+            // 
+            this.checkedListMenu.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.checkedListMenu.FormattingEnabled = true;
+            this.checkedListMenu.Location = new System.Drawing.Point(10, 50);
+            this.checkedListMenu.Name = "checkedListMenu";
+            this.checkedListMenu.Size = new System.Drawing.Size(470, 140);
+            this.checkedListMenu.TabIndex = 9;
+            // 
             // btnGuardar
             // 
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(125)))), ((int)(((byte)(50)))));
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(69)))), ((int)(((byte)(19)))));
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(150, 220);
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnGuardar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(223)))), ((int)(((byte)(186)))));
+            this.btnGuardar.Location = new System.Drawing.Point(150, 430);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(110, 40);
-            this.btnGuardar.TabIndex = 8;
-            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Size = new System.Drawing.Size(140, 45);
+            this.btnGuardar.TabIndex = 10;
+            this.btnGuardar.Text = "🔥 Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(67)))), ((int)(((byte)(33)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(270, 220);
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(223)))), ((int)(((byte)(186)))));
+            this.btnCancelar.Location = new System.Drawing.Point(310, 430);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(110, 40);
-            this.btnCancelar.TabIndex = 9;
-            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(140, 45);
+            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.Text = "✖ Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // groupBoxMenu
+            // 
+            this.groupBoxMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(240)))));
+            this.groupBoxMenu.Controls.Add(this.label5);
+            this.groupBoxMenu.Controls.Add(this.checkedListMenu);
+            this.groupBoxMenu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.groupBoxMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(67)))), ((int)(((byte)(33)))));
+            this.groupBoxMenu.Location = new System.Drawing.Point(20, 170);
+            this.groupBoxMenu.Name = "groupBoxMenu";
+            this.groupBoxMenu.Size = new System.Drawing.Size(490, 240);
+            this.groupBoxMenu.TabIndex = 12;
+            this.groupBoxMenu.TabStop = false;
+            this.groupBoxMenu.Text = "🍖 Menú de la Reserva";
             // 
             // FormEditarReserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 290);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(222)))), ((int)(((byte)(179)))));
+            this.ClientSize = new System.Drawing.Size(530, 500);
+            this.Controls.Add(this.groupBoxMenu);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.comboHoraFin);
@@ -154,7 +193,9 @@
             this.MinimizeBox = false;
             this.Name = "FormEditarReserva";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Editar Reserva";
+            this.Text = "🔥 Editar Reserva - Puerto de Brasas";
+            this.groupBoxMenu.ResumeLayout(false);
+            this.groupBoxMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -214,6 +214,68 @@ namespace PuertoDeBrasas.Repositorios
             }
         }
 
+        public bool ActualizarReservaConMenu(Reserva reserva, List<int> menusSeleccionados)
+        {
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // Actualizar datos básicos de la reserva
+                        string queryReserva = @"UPDATE reservas SET 
+                            Dia = @dia,
+                            Lugar = @lugar,
+                            Hora_Inicio = @inicio,
+                            Fecha_Fin = @fin
+                            WHERE ReservaID = @id";
+
+                        using (var cmdReserva = new MySqlCommand(queryReserva, conn, transaction))
+                        {
+                            cmdReserva.Parameters.AddWithValue("@id", reserva.ReservaID);
+                            cmdReserva.Parameters.AddWithValue("@dia", reserva.Dia);
+                            cmdReserva.Parameters.AddWithValue("@lugar", reserva.Lugar);
+                            cmdReserva.Parameters.AddWithValue("@inicio", reserva.HoraInicio);
+                            cmdReserva.Parameters.AddWithValue("@fin", reserva.HoraFin);
+                            cmdReserva.ExecuteNonQuery();
+                        }
+
+                        // Eliminar platos antiguos
+                        string queryEliminar = "DELETE FROM reservamenu WHERE ReservaID = @id";
+                        using (var cmdEliminar = new MySqlCommand(queryEliminar, conn, transaction))
+                        {
+                            cmdEliminar.Parameters.AddWithValue("@id", reserva.ReservaID);
+                            cmdEliminar.ExecuteNonQuery();
+                        }
+
+                        // Insertar nuevos platos
+                        foreach (int menuId in menusSeleccionados)
+                        {
+                            string queryMenu = @"INSERT INTO reservamenu 
+                                (ReservaID, MenuID, Cantidad) 
+                                VALUES (@reserva, @menu, 1)";
+
+                            using (var cmdMenu = new MySqlCommand(queryMenu, conn, transaction))
+                            {
+                                cmdMenu.Parameters.AddWithValue("@reserva", reserva.ReservaID);
+                                cmdMenu.Parameters.AddWithValue("@menu", menuId);
+                                cmdMenu.ExecuteNonQuery();
+                            }
+                        }
+
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
         public List<string> ObtenerMenusDeReserva(int reservaId)
         {
             var menus = new List<string>();

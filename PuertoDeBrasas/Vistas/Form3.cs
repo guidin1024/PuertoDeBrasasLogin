@@ -12,6 +12,7 @@ namespace PuertoDeBrasas
     {
         private ReservaRepositorio reservaRepo;
         private PlatoRepositorio platoRepo;
+        private const decimal PRECIO_POR_HORA = 40000.00m;
 
         public Form3()
         {
@@ -54,54 +55,68 @@ namespace PuertoDeBrasas
             domainUpDown2.ReadOnly = true;
         }
 
+        // Llama esto una vez (por ejemplo en Form_Load)
         private void ConfigurarCheckedListBox()
         {
-            // Control dinámico según si "Cabutia" está seleccionada
-            checkedListBox1.ItemCheck += (s, e) =>
+            // Evitar añadir el mismo handler varias veces
+            checkedListBox1.ItemCheck -= CheckedListBox1_ItemCheck;
+            checkedListBox1.ItemCheck += CheckedListBox1_ItemCheck;
+        }
+
+        private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            // Contar explícitamente cómo quedarán los items después del cambio
+            int seleccionados = 0;
+            bool cabutiaSeleccionada = false;
+
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
             {
-                if (e.NewValue == CheckState.Checked)
+                bool marcadoAntes = checkedListBox1.GetItemChecked(i);
+                bool marcadoDespues;
+
+                // Para el item que cambia, aplicar e.NewValue; para los demás usar el estado actual
+                if (i == e.Index)
+                    marcadoDespues = (e.NewValue == CheckState.Checked);
+                else
+                    marcadoDespues = marcadoAntes;
+
+                if (marcadoDespues)
                 {
-                    // Contar cuántos items están checked actualmente (sin incluir el que se está checkeando)
-                    int cantidadSeleccionada = checkedListBox1.CheckedItems.Count;
+                    seleccionados++;
 
-                    // Verificar si "Cabutia" está entre los seleccionados o si es el item que se está seleccionando
-                    bool cabutiaSeleccionada = false;
-                    for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                    // Comparación de texto segura (ignora mayúsculas y espacios)
+                    string texto = checkedListBox1.Items[i].ToString()?.Trim() ?? string.Empty;
+                    if (string.Equals(texto, "Cabutia", StringComparison.OrdinalIgnoreCase))
                     {
-                        if (i == e.Index && checkedListBox1.Items[i].ToString() == "Cabutia")
-                        {
-                            cabutiaSeleccionada = true;
-                            break;
-                        }
-                        else if (checkedListBox1.GetItemChecked(i) && checkedListBox1.Items[i].ToString() == "Cabutia")
-                        {
-                            cabutiaSeleccionada = true;
-                            break;
-                        }
-                    }
-
-                    // Máximo permitido: 3 normal, 4 si incluye Cabutia
-                    int maximoPermitido = cabutiaSeleccionada ? 4 : 3;
-
-                    if (cantidadSeleccionada >= maximoPermitido)
-                    {
-                        e.NewValue = CheckState.Unchecked;
-                        string mensaje = cabutiaSeleccionada
-                            ? "Ya seleccionaste el máximo de 4 opciones (incluyendo Cabutia)."
-                            : "Solo puedes seleccionar un máximo de 3 opciones.\n\nSi incluyes Cabutia, podrás seleccionar 4 opciones.";
-
-                        MessageBox.Show(mensaje, "Máximo alcanzado",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        cabutiaSeleccionada = true;
                     }
                 }
-            };
+            }
+
+            int maxPermitido = cabutiaSeleccionada ? 4 : 3;
+
+            if (seleccionados > maxPermitido)
+            {
+                // Bloquea la acción de marcado
+                e.NewValue = CheckState.Unchecked;
+
+                MessageBox.Show(
+                    cabutiaSeleccionada
+                        ? "Ya seleccionaste el máximo de 4 opciones (incluyendo Cabutia)."
+                        : "Solo puedes seleccionar un máximo de 3 opciones.\nSi incluyes Cabutia, podrás seleccionar 4 opciones.",
+                    "Máximo alcanzado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
         }
+
+
 
         private void buttonReserva_Click(object sender, EventArgs e)
         {
             try
             {
-                // Validar que hay un cliente logueado
                 if (Form1.ClienteActual == null)
                 {
                     MessageBox.Show("No hay un cliente autenticado. Por favor, inicia sesión nuevamente.",
@@ -109,7 +124,6 @@ namespace PuertoDeBrasas
                     return;
                 }
 
-                // Verificar si el cliente ya tiene una reserva pendiente o aceptada
                 if (reservaRepo.TieneReservaPendiente(Form1.ClienteActual.ClienteID))
                 {
                     MessageBox.Show(
@@ -121,7 +135,6 @@ namespace PuertoDeBrasas
                     return;
                 }
 
-                // Validar dirección
                 string direccion = textBox1.Text.Trim();
                 if (string.IsNullOrEmpty(direccion))
                 {
@@ -131,7 +144,6 @@ namespace PuertoDeBrasas
                     return;
                 }
 
-                // Validar selección de platos
                 if (checkedListBox1.CheckedItems.Count == 0)
                 {
                     MessageBox.Show("Por favor, selecciona al menos 1 opción del menú.",
@@ -139,17 +151,14 @@ namespace PuertoDeBrasas
                     return;
                 }
 
-                // Obtener fecha seleccionada
                 DateTime fechaSeleccionada = monthCalendar1.SelectionStart;
 
-                // Obtener horas
                 string horaInicioStr = domainUpDown1.SelectedItem?.ToString() ?? "10:00";
                 string horaFinStr = domainUpDown2.SelectedItem?.ToString() ?? "11:00";
 
                 TimeSpan horaInicio = TimeSpan.Parse(horaInicioStr);
                 TimeSpan horaFin = TimeSpan.Parse(horaFinStr);
 
-                // Validar que hora fin sea mayor que hora inicio
                 if (horaFin <= horaInicio)
                 {
                     MessageBox.Show("La hora de fin debe ser posterior a la hora de inicio.",
@@ -157,9 +166,16 @@ namespace PuertoDeBrasas
                     return;
                 }
 
-                // Obtener IDs y calcular precio total
+                // Calcular horas de duración
+                double duracionHoras = (horaFin - horaInicio).TotalHours;
+                if (horaFin < horaInicio) // Si termina al día siguiente
+                {
+                    duracionHoras = 24 - horaInicio.TotalHours + horaFin.TotalHours;
+                }
+
+                // Obtener IDs y calcular precio de platos
                 var menusSeleccionados = new List<int>();
-                decimal precioTotal = 0;
+                decimal precioPlatosTotal = 0;
                 var todosPlatos = platoRepo.ObtenerTodos();
 
                 foreach (string itemNombre in checkedListBox1.CheckedItems)
@@ -169,24 +185,31 @@ namespace PuertoDeBrasas
                     {
                         menusSeleccionados.Add(menuId);
 
-                        // Buscar el precio del plato
                         var plato = todosPlatos.FirstOrDefault(p => p.MenuID == menuId);
                         if (plato != null)
                         {
-                            precioTotal += plato.Precio;
+                            precioPlatosTotal += plato.Precio;
                         }
                     }
                 }
 
-                // Mostrar confirmación con precio total
+                // Calcular precio por horas
+                decimal precioHoras = (decimal)duracionHoras * PRECIO_POR_HORA;
+
+                // Precio total
+                decimal precioTotal = precioPlatosTotal + precioHoras;
+
                 string platosStr = string.Join(", ", checkedListBox1.CheckedItems.Cast<string>());
                 var confirmacion = MessageBox.Show(
                     $"📋 RESUMEN DE LA RESERVA\n\n" +
                     $"📅 Fecha: {fechaSeleccionada:dd/MM/yyyy}\n" +
-                    $"🕐 Horario: {horaInicioStr} - {horaFinStr}\n" +
+                    $"🕐 Horario: {horaInicioStr} - {horaFinStr} ({duracionHoras:F1} horas)\n" +
                     $"📍 Lugar: {direccion}\n" +
                     $"🍽️ Platos: {platosStr}\n\n" +
-                    $"💰 PRECIO TOTAL: ${precioTotal:N2}\n\n" +
+                    $"💰 DESGLOSE DE PRECIOS:\n" +
+                    $"   • Platos: ${precioPlatosTotal:N2}\n" +
+                    $"   • Servicio por hora ({duracionHoras:F1}h × ${PRECIO_POR_HORA:N2}): ${precioHoras:N2}\n\n" +
+                    $"💵 PRECIO TOTAL: ${precioTotal:N2}\n\n" +
                     $"¿Confirmar reserva?",
                     "Confirmar Reserva",
                     MessageBoxButtons.YesNo,
@@ -197,7 +220,6 @@ namespace PuertoDeBrasas
                     return;
                 }
 
-                // Crear objeto Reserva
                 var reserva = new Reserva
                 {
                     ClienteID = Form1.ClienteActual.ClienteID,
@@ -207,14 +229,16 @@ namespace PuertoDeBrasas
                     HoraFin = horaFin
                 };
 
-                // Guardar en la base de datos
                 bool exito = reservaRepo.CrearReserva(reserva, menusSeleccionados);
 
                 if (exito)
                 {
                     MessageBox.Show(
                         $"¡Reserva confirmada exitosamente!\n\n" +
-                        $"Precio total: ${precioTotal:N2}\n\n" +
+                        $"💰 Desglose:\n" +
+                        $"   • Platos: ${precioPlatosTotal:N2}\n" +
+                        $"   • Servicio ({duracionHoras:F1}h): ${precioHoras:N2}\n" +
+                        $"💵 Total a pagar: ${precioTotal:N2}\n\n" +
                         $"Tu reserva está en estado PENDIENTE y será revisada por el administrador.",
                         "Éxito",
                         MessageBoxButtons.OK,
@@ -292,6 +316,11 @@ namespace PuertoDeBrasas
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

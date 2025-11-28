@@ -145,7 +145,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Peru;
             label1.Font = new Font("Segoe UI Semibold", 24F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(71, 9);
+            label1.Location = new Point(158, 9);
             label1.Name = "label1";
             label1.Size = new Size(410, 54);
             label1.TabIndex = 7;
@@ -156,66 +156,67 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Peru;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.Location = new Point(71, 159);
+            label2.Location = new Point(12, 159);
             label2.Name = "label2";
-            label2.Size = new Size(208, 28);
+            label2.Size = new Size(319, 28);
             label2.TabIndex = 8;
-            label2.Text = "Sandwich de bondiola";
+            label2.Text = "Sandwich de bondiola ($3.500 c/u)";
+            label2.Click += label2_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.Peru;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label3.Location = new Point(512, 159);
+            label3.Location = new Point(453, 159);
             label3.Name = "label3";
-            label3.Size = new Size(96, 28);
+            label3.Size = new Size(208, 28);
             label3.TabIndex = 9;
-            label3.Text = "Choripan";
+            label3.Text = "Choripan ($3.000 c/u)";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.BackColor = Color.Peru;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.Location = new Point(82, 402);
+            label4.Location = new Point(25, 400);
             label4.Name = "label4";
-            label4.Size = new Size(184, 28);
+            label4.Size = new Size(293, 28);
             label4.TabIndex = 10;
-            label4.Text = "Empanadas de PaD";
+            label4.Text = "Empanadas de PaD ($1.500 c/u)";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.BackColor = Color.Peru;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label5.Location = new Point(494, 400);
+            label5.Location = new Point(432, 400);
             label5.Name = "label5";
-            label5.Size = new Size(144, 28);
+            label5.Size = new Size(257, 28);
             label5.TabIndex = 11;
-            label5.Text = "Bife de chorizo";
+            label5.Text = "Bife de chorizo ($4.000 c/u)";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.BackColor = Color.Peru;
             label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label6.Location = new Point(125, 642);
+            label6.Location = new Point(77, 642);
             label6.Name = "label6";
-            label6.Size = new Size(83, 28);
+            label6.Size = new Size(196, 28);
             label6.TabIndex = 12;
-            label6.Text = "Cabutia";
+            label6.Text = "Cabutia ($4.000 c/u)";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.BackColor = Color.Peru;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label7.Location = new Point(474, 642);
+            label7.Location = new Point(416, 642);
             label7.Name = "label7";
-            label7.Size = new Size(176, 28);
+            label7.Size = new Size(289, 28);
             label7.TabIndex = 13;
-            label7.Text = "Sandwich de vacío";
+            label7.Text = "Sandwich de vacío ($4.000 c/u)";
             // 
             // label8
             // 
@@ -324,7 +325,7 @@
             // checkedListBox1
             // 
             checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Items.AddRange(new object[] { "Sandwich de bondiola", "Choripan", "Empanadas", "Bife de chorizo", "Cabutia", "Sandwich de vacío" });
+            checkedListBox1.Items.AddRange(new object[] { "Sandwich de bondiola", "Choripan", "Empanadas", "Bife de chorizo ", "Cabutia ", "Sandwich de vacío" });
             checkedListBox1.Location = new Point(6, 24);
             checkedListBox1.Name = "checkedListBox1";
             checkedListBox1.Size = new Size(299, 124);
