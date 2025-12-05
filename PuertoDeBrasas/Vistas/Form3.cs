@@ -201,15 +201,15 @@ namespace PuertoDeBrasas
 
                 string platosStr = string.Join(", ", checkedListBox1.CheckedItems.Cast<string>());
                 var confirmacion = MessageBox.Show(
-                    $"📋 RESUMEN DE LA RESERVA\n\n" +
-                    $"📅 Fecha: {fechaSeleccionada:dd/MM/yyyy}\n" +
-                    $"🕐 Horario: {horaInicioStr} - {horaFinStr} ({duracionHoras:F1} horas)\n" +
-                    $"📍 Lugar: {direccion}\n" +
-                    $"🍽️ Platos: {platosStr}\n\n" +
-                    $"💰 DESGLOSE DE PRECIOS:\n" +
-                    $"   • Platos: ${precioPlatosTotal:N2}\n" +
-                    $"   • Servicio por hora ({duracionHoras:F1}h × ${PRECIO_POR_HORA:N2}): ${precioHoras:N2}\n\n" +
-                    $"💵 PRECIO TOTAL: ${precioTotal:N2}\n\n" +
+                    $"RESUMEN DE LA RESERVA\n\n" +
+                    $"Fecha: {fechaSeleccionada:dd/MM/yyyy}\n" +
+                    $"Horario: {horaInicioStr} - {horaFinStr} ({duracionHoras:F1} horas)\n" +
+                    $"Lugar: {direccion}\n" +
+                    $"Platos: {platosStr}\n\n" +
+                    $"DESGLOSE DE PRECIOS:\n" +
+                    $" • Platos: ${precioPlatosTotal:N2}\n" +
+                    $" • Servicio por hora ({duracionHoras:F1}h × ${PRECIO_POR_HORA:N2}): ${precioHoras:N2}\n\n" +
+                    $"PRECIO TOTAL: ${precioTotal:N2}\n\n" +
                     $"¿Confirmar reserva?",
                     "Confirmar Reserva",
                     MessageBoxButtons.YesNo,
@@ -235,10 +235,10 @@ namespace PuertoDeBrasas
                 {
                     MessageBox.Show(
                         $"¡Reserva confirmada exitosamente!\n\n" +
-                        $"💰 Desglose:\n" +
-                        $"   • Platos: ${precioPlatosTotal:N2}\n" +
-                        $"   • Servicio ({duracionHoras:F1}h): ${precioHoras:N2}\n" +
-                        $"💵 Total a pagar: ${precioTotal:N2}\n\n" +
+                        $"Desglose:\n" +
+                        $" • Platos: ${precioPlatosTotal:N2}\n" +
+                        $" • Servicio ({duracionHoras:F1}h): ${precioHoras:N2}\n" +
+                        $"Total a pagar: ${precioTotal:N2}\n\n" +
                         $"Tu reserva está en estado PENDIENTE y será revisada por el administrador.",
                         "Éxito",
                         MessageBoxButtons.OK,
@@ -319,6 +319,11 @@ namespace PuertoDeBrasas
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
         {
 
         }

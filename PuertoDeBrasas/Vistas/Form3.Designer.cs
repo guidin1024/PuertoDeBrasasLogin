@@ -56,6 +56,7 @@
             checkedListBox1 = new CheckedListBox();
             label14 = new Label();
             buttonReserva = new Button();
+            label15 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -353,11 +354,22 @@
             buttonReserva.UseVisualStyleBackColor = true;
             buttonReserva.Click += buttonReserva_Click;
             // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(1259, 805);
+            label15.Name = "label15";
+            label15.Size = new Size(254, 20);
+            label15.TabIndex = 37;
+            label15.Text = "Contactanos a través de: 2914416222";
+            label15.Click += label15_Click;
+            // 
             // Form3
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1647, 847);
+            Controls.Add(label15);
             Controls.Add(buttonReserva);
             Controls.Add(label14);
             Controls.Add(groupBox1);
@@ -428,5 +440,6 @@
         private Label label14;
         private CheckedListBox checkedListBox1;
         private Button buttonReserva;
+        private Label label15;
     }
 }

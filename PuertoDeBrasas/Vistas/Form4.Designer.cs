@@ -39,8 +39,9 @@
             groupMenu.SuspendLayout();
             groupClientes.SuspendLayout();
             SuspendLayout();
-
+            // 
             // groupReservas
+            // 
             groupReservas.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             groupReservas.Controls.Add(listaReservas);
             groupReservas.Controls.Add(btnAceptar);
@@ -55,8 +56,9 @@
             groupReservas.TabIndex = 0;
             groupReservas.TabStop = false;
             groupReservas.Text = "Gestión de Reservas";
-
+            // 
             // listaReservas
+            // 
             listaReservas.AllowUserToAddRows = false;
             listaReservas.AllowUserToDeleteRows = false;
             listaReservas.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -67,8 +69,9 @@
             listaReservas.RowHeadersWidth = 51;
             listaReservas.Size = new Size(1200, 350);
             listaReservas.TabIndex = 0;
-
+            // 
             // btnAceptar
+            // 
             btnAceptar.BackColor = Color.FromArgb(46, 125, 50);
             btnAceptar.FlatStyle = FlatStyle.Flat;
             btnAceptar.ForeColor = Color.White;
@@ -78,9 +81,10 @@
             btnAceptar.TabIndex = 1;
             btnAceptar.Text = "✓ Aceptar";
             btnAceptar.UseVisualStyleBackColor = false;
-            btnAceptar.Click += new EventHandler(this.btnAceptar_Click);
-
+            btnAceptar.Click += btnAceptar_Click;
+            // 
             // btnRechazar
+            // 
             btnRechazar.BackColor = Color.FromArgb(211, 47, 47);
             btnRechazar.FlatStyle = FlatStyle.Flat;
             btnRechazar.ForeColor = Color.White;
@@ -90,9 +94,10 @@
             btnRechazar.TabIndex = 2;
             btnRechazar.Text = "✗ Rechazar";
             btnRechazar.UseVisualStyleBackColor = false;
-            btnRechazar.Click += new EventHandler(this.btnRechazar_Click);
-
+            btnRechazar.Click += btnRechazar_Click;
+            // 
             // btnEditarReserva
+            // 
             btnEditarReserva.BackColor = Color.FromArgb(255, 152, 0);
             btnEditarReserva.FlatStyle = FlatStyle.Flat;
             btnEditarReserva.ForeColor = Color.White;
@@ -102,9 +107,10 @@
             btnEditarReserva.TabIndex = 3;
             btnEditarReserva.Text = "✎ Editar";
             btnEditarReserva.UseVisualStyleBackColor = false;
-            btnEditarReserva.Click += new EventHandler(this.btnEditarReserva_Click);
-
+            btnEditarReserva.Click += btnEditarReserva_Click;
+            // 
             // btnVerDetalles
+            // 
             btnVerDetalles.BackColor = Color.FromArgb(33, 150, 243);
             btnVerDetalles.FlatStyle = FlatStyle.Flat;
             btnVerDetalles.ForeColor = Color.White;
@@ -114,9 +120,10 @@
             btnVerDetalles.TabIndex = 4;
             btnVerDetalles.Text = "🔍 Ver Detalles";
             btnVerDetalles.UseVisualStyleBackColor = false;
-            btnVerDetalles.Click += new EventHandler(this.btnVerDetalles_Click);
-
+            btnVerDetalles.Click += btnVerDetalles_Click;
+            // 
             // btnEliminarReserva
+            // 
             btnEliminarReserva.BackColor = Color.FromArgb(244, 67, 54);
             btnEliminarReserva.FlatStyle = FlatStyle.Flat;
             btnEliminarReserva.ForeColor = Color.White;
@@ -126,9 +133,10 @@
             btnEliminarReserva.TabIndex = 5;
             btnEliminarReserva.Text = "🗑 Eliminar";
             btnEliminarReserva.UseVisualStyleBackColor = false;
-            btnEliminarReserva.Click += new EventHandler(this.btnEliminarReserva_Click);
-
+            btnEliminarReserva.Click += btnEliminarReserva_Click;
+            // 
             // groupMenu
+            // 
             groupMenu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             groupMenu.Controls.Add(listaMenu);
             groupMenu.Controls.Add(btnAgregarMenu);
@@ -141,8 +149,9 @@
             groupMenu.TabIndex = 1;
             groupMenu.TabStop = false;
             groupMenu.Text = "Gestión del Menú";
-
+            // 
             // listaMenu
+            // 
             listaMenu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listaMenu.FullRowSelect = true;
             listaMenu.GridLines = true;
@@ -152,8 +161,9 @@
             listaMenu.TabIndex = 0;
             listaMenu.UseCompatibleStateImageBehavior = false;
             listaMenu.View = View.Details;
-
+            // 
             // btnAgregarMenu
+            // 
             btnAgregarMenu.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAgregarMenu.BackColor = Color.FromArgb(46, 125, 50);
             btnAgregarMenu.FlatStyle = FlatStyle.Flat;
@@ -164,9 +174,10 @@
             btnAgregarMenu.TabIndex = 1;
             btnAgregarMenu.Text = "+ Agregar";
             btnAgregarMenu.UseVisualStyleBackColor = false;
-            btnAgregarMenu.Click += new EventHandler(this.btnAgregarMenu_Click);
-
+            btnAgregarMenu.Click += btnAgregarMenu_Click;
+            // 
             // btnEditarMenu
+            // 
             btnEditarMenu.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEditarMenu.BackColor = Color.FromArgb(255, 152, 0);
             btnEditarMenu.FlatStyle = FlatStyle.Flat;
@@ -177,9 +188,10 @@
             btnEditarMenu.TabIndex = 2;
             btnEditarMenu.Text = "✎ Editar";
             btnEditarMenu.UseVisualStyleBackColor = false;
-            btnEditarMenu.Click += new EventHandler(this.btnEditarMenu_Click);
-
+            btnEditarMenu.Click += btnEditarMenu_Click;
+            // 
             // btnActivar
+            // 
             btnActivar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnActivar.BackColor = Color.FromArgb(211, 47, 47);
             btnActivar.FlatStyle = FlatStyle.Flat;
@@ -190,9 +202,10 @@
             btnActivar.TabIndex = 3;
             btnActivar.Text = "🗑 Eliminar";
             btnActivar.UseVisualStyleBackColor = false;
-            btnActivar.Click += new EventHandler(this.btnActivar_Click);
-
+            btnActivar.Click += btnActivar_Click;
+            // 
             // groupClientes
+            // 
             groupClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupClientes.Controls.Add(listaClientes);
             groupClientes.Controls.Add(btnAgregarCliente);
@@ -205,8 +218,9 @@
             groupClientes.TabIndex = 2;
             groupClientes.TabStop = false;
             groupClientes.Text = "Gestión de Clientes y Administradores";
-
+            // 
             // listaClientes
+            // 
             listaClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listaClientes.FullRowSelect = true;
             listaClientes.GridLines = true;
@@ -217,7 +231,9 @@
             listaClientes.UseCompatibleStateImageBehavior = false;
             listaClientes.View = View.Details;
 
+            // 
             // btnAgregarCliente
+            // 
             btnAgregarCliente.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAgregarCliente.BackColor = Color.FromArgb(46, 125, 50);
             btnAgregarCliente.FlatStyle = FlatStyle.Flat;
@@ -228,9 +244,10 @@
             btnAgregarCliente.TabIndex = 1;
             btnAgregarCliente.Text = "+ Agregar";
             btnAgregarCliente.UseVisualStyleBackColor = false;
-            btnAgregarCliente.Click += new EventHandler(this.btnAgregarCliente_Click);
-
+            btnAgregarCliente.Click += btnAgregarCliente_Click;
+            // 
             // btnEditarCliente
+            // 
             btnEditarCliente.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEditarCliente.BackColor = Color.FromArgb(255, 152, 0);
             btnEditarCliente.FlatStyle = FlatStyle.Flat;
@@ -241,9 +258,10 @@
             btnEditarCliente.TabIndex = 2;
             btnEditarCliente.Text = "✎ Editar";
             btnEditarCliente.UseVisualStyleBackColor = false;
-            btnEditarCliente.Click += new EventHandler(this.btnEditarCliente_Click);
-
+            btnEditarCliente.Click += btnEditarCliente_Click;
+            // 
             // btnEliminarCliente
+            // 
             btnEliminarCliente.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnEliminarCliente.BackColor = Color.FromArgb(211, 47, 47);
             btnEliminarCliente.FlatStyle = FlatStyle.Flat;
@@ -254,19 +272,21 @@
             btnEliminarCliente.TabIndex = 3;
             btnEliminarCliente.Text = "🗑 Eliminar";
             btnEliminarCliente.UseVisualStyleBackColor = false;
-            btnEliminarCliente.Click += new EventHandler(this.btnEliminarCliente_Click);
-
+            btnEliminarCliente.Click += btnEliminarCliente_Click;
+            // 
             // lblUsuario
+            // 
             lblUsuario.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lblUsuario.AutoSize = true;
             lblUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblUsuario.Location = new Point(900, 825);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(200, 23);
+            lblUsuario.Size = new Size(173, 23);
             lblUsuario.TabIndex = 3;
             lblUsuario.Text = "Usuario: Cargando...";
-
+            // 
             // btnCerrarSesion
+            // 
             btnCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCerrarSesion.BackColor = Color.FromArgb(211, 47, 47);
             btnCerrarSesion.FlatStyle = FlatStyle.Flat;
@@ -278,28 +298,29 @@
             btnCerrarSesion.TabIndex = 4;
             btnCerrarSesion.Text = "Cerrar Sesión";
             btnCerrarSesion.UseVisualStyleBackColor = false;
-            btnCerrarSesion.Click += new EventHandler(this.btnCerrarSesion_Click);
-
+            btnCerrarSesion.Click += btnCerrarSesion_Click;
+            // 
             // Form4
-            this.AutoScaleDimensions = new SizeF(8F, 20F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.ClientSize = new Size(1280, 870);
-            this.Controls.Add(btnCerrarSesion);
-            this.Controls.Add(lblUsuario);
-            this.Controls.Add(groupClientes);
-            this.Controls.Add(groupMenu);
-            this.Controls.Add(groupReservas);
-            this.MinimumSize = new Size(1280, 870);
-            this.Name = "Form4";
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Text = "Panel de Administrador - Puerto de Brasas";
-            this.WindowState = FormWindowState.Maximized;
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1280, 870);
+            Controls.Add(btnCerrarSesion);
+            Controls.Add(lblUsuario);
+            Controls.Add(groupClientes);
+            Controls.Add(groupMenu);
+            Controls.Add(groupReservas);
+            MinimumSize = new Size(1280, 870);
+            Name = "Form4";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Panel de Administrador - Puerto de Brasas";
+            WindowState = FormWindowState.Maximized;
             groupReservas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)listaReservas).EndInit();
             groupMenu.ResumeLayout(false);
             groupClientes.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private GroupBox groupReservas;

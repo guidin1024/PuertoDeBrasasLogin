@@ -68,7 +68,7 @@ namespace PuertoDeBrasas.Vistas
             CargarClientes();
         }
 
-        // === GESTIÓN DE RESERVAS ===
+        //GESTIÓN DE RESERVAS
 
         private void CargarReservas()
         {
@@ -77,16 +77,13 @@ namespace PuertoDeBrasas.Vistas
                 var dt = reservaRepo.ObtenerTodasReservas();
                 listaReservas.DataSource = dt;
 
-                // Mejorar la visualización
                 if (listaReservas.Columns.Count > 0)
                 {
-                    // Ocultar columna ReservaID si existe
                     if (listaReservas.Columns.Contains("ReservaID"))
                     {
                         listaReservas.Columns["ReservaID"].Visible = false;
                     }
 
-                    // Ajustar nombres de columnas
                     if (listaReservas.Columns.Contains("Cliente"))
                         listaReservas.Columns["Cliente"].HeaderText = "Cliente";
 
@@ -134,13 +131,13 @@ namespace PuertoDeBrasas.Vistas
                     string estado = reserva.Estado ?? "Pendiente";
 
                     MessageBox.Show(
-                        $"🆔 ID Cliente: {reserva.ClienteID}\n" +
-                        $"📍 Lugar: {reserva.Lugar}\n" +
-                        $"📅 Fecha: {reserva.Dia:dd/MM/yyyy}\n" +
-                        $"🕐 Hora Inicio: {reserva.HoraInicio:hh\\:mm}\n" +
-                        $"🕐 Hora Fin: {reserva.HoraFin:hh\\:mm}\n" +
-                        $"📋 Estado: {estado}\n\n" +
-                        $"🍽️ Platos elegidos:\n• {menusStr}",
+                        $"ID Cliente: {reserva.ClienteID}\n" +
+                        $"Lugar: {reserva.Lugar}\n" +
+                        $"Fecha: {reserva.Dia:dd/MM/yyyy}\n" +
+                        $"Hora Inicio: {reserva.HoraInicio:hh\\:mm}\n" +
+                        $"Hora Fin: {reserva.HoraFin:hh\\:mm}\n" +
+                        $"Estado: {estado}\n\n" +
+                        $"Platos elegidos:\n• {menusStr}",
                         "Detalles de la Reserva",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -168,7 +165,7 @@ namespace PuertoDeBrasas.Vistas
 
                 if (reservaRepo.CambiarEstado(reservaId, "Aceptado"))
                 {
-                    MessageBox.Show("✅ Reserva aceptada exitosamente.", "Éxito",
+                    MessageBox.Show("Reserva aceptada exitosamente.", "Éxito",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarReservas();
                 }
@@ -209,7 +206,7 @@ namespace PuertoDeBrasas.Vistas
 
                     if (reservaRepo.CambiarEstado(reservaId, "Rechazado"))
                     {
-                        MessageBox.Show("❌ Reserva rechazada.", "Estado actualizado",
+                        MessageBox.Show("Reserva rechazada.", "Estado actualizado",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarReservas();
                     }
@@ -255,7 +252,7 @@ namespace PuertoDeBrasas.Vistas
                         // Usar el método que también actualiza el menú
                         if (reservaRepo.ActualizarReservaConMenu(formEditar.ReservaEditada, formEditar.MenusSeleccionados))
                         {
-                            MessageBox.Show("✅ Reserva actualizada exitosamente.", "Éxito",
+                            MessageBox.Show("Reserva actualizada exitosamente.", "Éxito",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                             CargarReservas();
                         }
@@ -306,7 +303,7 @@ namespace PuertoDeBrasas.Vistas
 
                     if (reservaRepo.EliminarReserva(reservaId))
                     {
-                        MessageBox.Show("✅ Reserva eliminada exitosamente.", "Éxito",
+                        MessageBox.Show("Reserva eliminada exitosamente.", "Éxito",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarReservas();
                     }
@@ -324,7 +321,7 @@ namespace PuertoDeBrasas.Vistas
             }
         }
 
-        // === GESTIÓN DEL MENÚ ===
+        //GESTIÓN DEL MENÚ
 
         private void CargarMenu()
         {
@@ -359,7 +356,7 @@ namespace PuertoDeBrasas.Vistas
                     {
                         if (platoRepo.AgregarPlato(form.PlatoNuevo))
                         {
-                            MessageBox.Show("✅ Plato agregado exitosamente.", "Éxito",
+                            MessageBox.Show("Plato agregado exitosamente.", "Éxito",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                             CargarMenu();
                         }
@@ -396,7 +393,7 @@ namespace PuertoDeBrasas.Vistas
                     {
                         if (platoRepo.ActualizarPlato(form.PlatoNuevo))
                         {
-                            MessageBox.Show("✅ Plato actualizado exitosamente.", "Éxito",
+                            MessageBox.Show("Plato actualizado exitosamente.", "Éxito",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                             CargarMenu();
                         }
@@ -438,7 +435,7 @@ namespace PuertoDeBrasas.Vistas
                 {
                     if (platoRepo.EliminarPlato(plato.MenuID))
                     {
-                        MessageBox.Show("✅ Plato eliminado exitosamente.", "Éxito",
+                        MessageBox.Show("Plato eliminado exitosamente.", "Éxito",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarMenu();
                     }
@@ -456,7 +453,7 @@ namespace PuertoDeBrasas.Vistas
             }
         }
 
-        // === GESTIÓN DE CLIENTES ===
+        //GESTIÓN DE CLIENTES
 
         private void CargarClientes()
         {
@@ -482,98 +479,33 @@ namespace PuertoDeBrasas.Vistas
             }
         }
 
+        // Form4.cs - Actualizado para usar FormAgregarCliente
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            string nombre = PromptInput("Ingrese el nombre completo:", "Agregar Cliente");
-            if (string.IsNullOrWhiteSpace(nombre)) return;
-
-            string email = PromptInput("Ingrese el correo electrónico (formato: usuario@gmail.com):", "Agregar Cliente");
-            if (string.IsNullOrWhiteSpace(email)) return;
-
-            string telefono = PromptInput("Ingrese el teléfono (10 dígitos):", "Agregar Cliente");
-            if (string.IsNullOrWhiteSpace(telefono)) return;
-
-            string clave = PromptInput("Ingrese la contraseña (mínimo 4 caracteres):", "Agregar Cliente");
-            if (string.IsNullOrWhiteSpace(clave)) return;
-
-            var tipoResult = MessageBox.Show(
-                "Seleccione el tipo de cliente:\n\n" +
-                "SÍ = Empresa\n" +
-                "NO = Persona\n" +
-                "CANCELAR = Administrador",
-                "Tipo de Cliente",
-                MessageBoxButtons.YesNoCancel,
-                MessageBoxIcon.Question);
-
-            if (tipoResult == DialogResult.Cancel)
+            using (var form = new FormAgregarCliente())
             {
-                var confirmAdmin = MessageBox.Show(
-                    "¿Confirma que desea crear una cuenta de Administrador?",
-                    "Confirmar Administrador",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
-
-                if (confirmAdmin == DialogResult.No) return;
-            }
-
-            string tipo = tipoResult == DialogResult.Yes ? "Empresa" :
-                          tipoResult == DialogResult.No ? "Persona" : "Administrador";
-
-            if (!System.Text.RegularExpressions.Regex.IsMatch(nombre, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
-            {
-                MessageBox.Show("El nombre solo puede contener letras y espacios.", "Nombre inválido",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[a-zA-Z0-9]+@gmail\.com$"))
-            {
-                MessageBox.Show("El correo debe tener el formato 'usuario@gmail.com'.", "Email inválido",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!System.Text.RegularExpressions.Regex.IsMatch(telefono, @"^\d{10}$"))
-            {
-                MessageBox.Show("El teléfono debe contener exactamente 10 números.", "Teléfono inválido",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (clave.Length < 4)
-            {
-                MessageBox.Show("La contraseña debe tener al menos 4 caracteres.", "Contraseña inválida",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            var nuevoCliente = new Cliente
-            {
-                Nombre = nombre,
-                CorreoElectronico = email,
-                Telefono = telefono,
-                Clave = clave,
-                TipoCliente = tipo
-            };
-
-            try
-            {
-                if (clienteRepo.Registrar(nuevoCliente))
+                if (form.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("✅ Cliente agregado exitosamente.", "Éxito",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CargarClientes();
+                    try
+                    {
+                        if (clienteRepo.Registrar(form.ClienteNuevo))
+                        {
+                            MessageBox.Show("✅ Cliente agregado exitosamente.", "Éxito",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CargarClientes();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo agregar el cliente.", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("No se pudo agregar el cliente.", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -588,58 +520,30 @@ namespace PuertoDeBrasas.Vistas
 
             var cliente = (Cliente)listaClientes.SelectedItems[0].Tag;
 
-            string nombre = PromptInput("Nombre completo:", "Editar Cliente", cliente.Nombre);
-            if (string.IsNullOrWhiteSpace(nombre)) return;
-
-            string email = PromptInput("Correo electrónico:", "Editar Cliente", cliente.CorreoElectronico);
-            if (string.IsNullOrWhiteSpace(email)) return;
-
-            string telefono = PromptInput("Teléfono (10 dígitos):", "Editar Cliente", cliente.Telefono);
-            if (string.IsNullOrWhiteSpace(telefono)) return;
-
-            if (!System.Text.RegularExpressions.Regex.IsMatch(nombre, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            using (var form = new FormAgregarCliente(cliente))
             {
-                MessageBox.Show("El nombre solo puede contener letras y espacios.", "Nombre inválido",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[a-zA-Z0-9]+@gmail\.com$"))
-            {
-                MessageBox.Show("El correo debe tener el formato 'usuario@gmail.com'.", "Email inválido",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!System.Text.RegularExpressions.Regex.IsMatch(telefono, @"^\d{10}$"))
-            {
-                MessageBox.Show("El teléfono debe contener exactamente 10 números.", "Teléfono inválido",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            cliente.Nombre = nombre;
-            cliente.CorreoElectronico = email;
-            cliente.Telefono = telefono;
-
-            try
-            {
-                if (clienteRepo.Actualizar(cliente))
+                if (form.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("✅ Cliente actualizado exitosamente.", "Éxito",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CargarClientes();
+                    try
+                    {
+                        if (clienteRepo.Actualizar(form.ClienteNuevo))
+                        {
+                            MessageBox.Show("✅ Cliente actualizado exitosamente.", "Éxito",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CargarClientes();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo actualizar el cliente.", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message, "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("No se pudo actualizar el cliente.", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -681,7 +585,7 @@ namespace PuertoDeBrasas.Vistas
                 {
                     if (clienteRepo.Eliminar(cliente.ClienteID))
                     {
-                        MessageBox.Show("✅ Cliente eliminado exitosamente.", "Éxito",
+                        MessageBox.Show("Cliente eliminado exitosamente.", "Éxito",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarClientes();
                     }
@@ -753,5 +657,7 @@ namespace PuertoDeBrasas.Vistas
 
             return promptForm.ShowDialog() == DialogResult.OK ? textBox.Text : null;
         }
+
+       
     }
 }

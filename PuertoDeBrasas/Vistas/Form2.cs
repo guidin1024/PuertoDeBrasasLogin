@@ -23,6 +23,7 @@ namespace PuertoDeBrasas
         }
 
 
+        // Form2.cs - Actualizado con validación de contraseña
         private void buttonRegistro_Click(object sender, EventArgs e)
         {
             string nombre = textBoxNom.Text.Trim();
@@ -57,6 +58,31 @@ namespace PuertoDeBrasas
             if (!System.Text.RegularExpressions.Regex.IsMatch(telefono, @"^\d{10}$"))
             {
                 MessageBox.Show("El teléfono debe contener exactamente 10 números.", "Teléfono inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // NUEVA VALIDACIÓN DE CONTRASEÑA
+            if (clave.Length < 8)
+            {
+                MessageBox.Show("La contraseña debe tener al menos 8 caracteres.", "Contraseña inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(clave, @"[A-Z]"))
+            {
+                MessageBox.Show("La contraseña debe contener al menos una letra mayúscula.", "Contraseña inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(clave, @"[a-z]"))
+            {
+                MessageBox.Show("La contraseña debe contener al menos una letra minúscula.", "Contraseña inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(clave, @"[!@#$%^&*()_+\-=\[\]{};':""\\|,.<>\/?]"))
+            {
+                MessageBox.Show("La contraseña debe contener al menos un carácter especial (!@#$%^&* etc.).", "Contraseña inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

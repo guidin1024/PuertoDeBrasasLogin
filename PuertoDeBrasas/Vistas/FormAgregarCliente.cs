@@ -36,10 +36,11 @@ namespace PuertoDeBrasas.Vistas
                 esEdicion = false;
                 ClienteNuevo = new Cliente();
                 this.Text = "Agregar Cliente";
-                comboTipo.SelectedIndex = 0; // Por defecto "Persona"
+                comboTipo.SelectedIndex = 0; 
             }
         }
 
+        // FormAgregarCliente.cs - Actualizado con validación de contraseña
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Validar nombre
@@ -105,9 +106,36 @@ namespace PuertoDeBrasas.Vistas
                 return;
             }
 
-            if (txtClave.Text.Length < 4)
+            // NUEVA VALIDACIÓN DE CONTRASEÑA - Requisitos actualizados
+            string clave = txtClave.Text.Trim();
+
+            if (clave.Length < 8)
             {
-                MessageBox.Show("La contraseña debe tener al menos 4 caracteres.", "Contraseña inválida",
+                MessageBox.Show("La contraseña debe tener al menos 8 caracteres.", "Contraseña inválida",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtClave.Focus();
+                return;
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(clave, @"[A-Z]"))
+            {
+                MessageBox.Show("La contraseña debe contener al menos una letra mayúscula.", "Contraseña inválida",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtClave.Focus();
+                return;
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(clave, @"[a-z]"))
+            {
+                MessageBox.Show("La contraseña debe contener al menos una letra minúscula.", "Contraseña inválida",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtClave.Focus();
+                return;
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(clave, @"[!@#$%^&*()_+\-=\[\]{};':""\\|,.<>\/?]"))
+            {
+                MessageBox.Show("La contraseña debe contener al menos un carácter especial (!@#$%^&* etc.).", "Contraseña inválida",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtClave.Focus();
                 return;
@@ -126,7 +154,7 @@ namespace PuertoDeBrasas.Vistas
             ClienteNuevo.Nombre = txtNombre.Text.Trim();
             ClienteNuevo.CorreoElectronico = txtEmail.Text.Trim();
             ClienteNuevo.Telefono = txtTelefono.Text.Trim();
-            ClienteNuevo.Clave = txtClave.Text.Trim();
+            ClienteNuevo.Clave = clave;
             ClienteNuevo.TipoCliente = comboTipo.SelectedItem.ToString() ?? "Persona";
 
             this.DialogResult = DialogResult.OK;
